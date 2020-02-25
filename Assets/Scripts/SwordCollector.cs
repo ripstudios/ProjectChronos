@@ -15,7 +15,9 @@ public class SwordCollector : MonoBehaviour
     public Rigidbody sword;
 
     void Awake() {
-        handHold = this.transform.Find("FCG_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand");
+        handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand");
+        // handHold = this.transform.Find("FGC_Male_Char_Adam_Rig");
+        Debug.Log("handHold " + handHold);
         if (swordPrefab == null) {
             Debug.LogError("swordPrefab cannot be found");
         }
