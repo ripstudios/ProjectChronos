@@ -1,5 +1,5 @@
 ﻿/*
-Modified from https://learn.unity.com/project/roll-a-ball-tutorial
+Modified from CS 4455 Milestone Code (EventManager.cs by Jeff iWlson)
 */
 
 using System.Collections;

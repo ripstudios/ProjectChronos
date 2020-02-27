@@ -1,1 +1,1 @@
-Source: Warrior Pack Bundle 2 Free - by Explosive, 1/3/2018. Purchased from Unity Asset Store on 2/21/2020. Link: https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-2-free-42454.
+Source: Warrior Pack Bundle 2 Free - by Explosive, 1/3/2018. Purchased from Unity Asset Store on 2/21/2020. Link: https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-2-free-42454
