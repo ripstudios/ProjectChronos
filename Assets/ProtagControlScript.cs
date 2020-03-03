@@ -12,7 +12,7 @@ public class ProtagControlScript : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        fastSpeed = 9.0f;
+        fastSpeed = 1.0f;
         slowSpeed = 1.0f;
     }
 
@@ -49,6 +49,16 @@ public class ProtagControlScript : MonoBehaviour
             anim.SetBool("Jumping", true);
             StartCoroutine(Wait(1f));
             anim.SetBool("Jumping", false);
+        }
+
+        if (Input.GetKey(KeyCode.Q)) {
+            // and check if he has sword
+            anim.SetBool("Attack", true);
+            Debug.Log("attack!");
+            StartCoroutine(Wait(3f));
+            anim.SetBool("Attack", false);
+            // complete anim
+            // set to false
         }
 
         // TimeShift functionality
