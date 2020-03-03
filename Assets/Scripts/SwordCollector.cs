@@ -14,6 +14,8 @@ public class SwordCollector : MonoBehaviour
 
     public Rigidbody sword;
 
+    public bool hasSword;
+
     void Awake() {
         handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand/SwordHoldSpot");
         // handHold = this.transform.Find("FGC_Male_Char_Adam_Rig");
@@ -24,9 +26,14 @@ public class SwordCollector : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    void Start() {
+        hasSword = false;
+    }
+
     public void CollectSword() {
         sword = Instantiate<Rigidbody>(swordPrefab, handHold);
         sword.transform.localPosition = new Vector3(0, 0, 0);
         sword.isKinematic = true;
+        hasSword = true;
     }
 }
