@@ -51,14 +51,10 @@ public class ProtagControlScript : MonoBehaviour
             anim.SetBool("Jumping", false);
         }
 
-        // if you press the button enough times really quickly it works
-        if (Input.GetKey(KeyCode.Q)) { // doesn't really work, just needed a temp solution, feel free to modify
-            // and check if he has sword
+        if (Input.GetKey(KeyCode.Q)) {
+            // TODO and check if he has sword
             anim.Play("Attack");
             Debug.Log("attack!");
-            
-            // complete anim
-            // set to false
         }
 
         // TimeShift functionality
