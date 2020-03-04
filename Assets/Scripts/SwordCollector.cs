@@ -33,6 +33,7 @@ public class SwordCollector : MonoBehaviour
     public void CollectSword() {
         sword = Instantiate<Rigidbody>(swordPrefab, handHold);
         sword.transform.localPosition = new Vector3(0, 0, 0);
+        // sword.transform.localRotation // set this to modify sword rotation so holding is more realistic
         sword.isKinematic = true;
         hasSword = true;
     }
