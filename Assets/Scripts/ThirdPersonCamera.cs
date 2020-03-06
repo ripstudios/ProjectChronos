@@ -28,7 +28,7 @@ public class ThirdPersonCamera : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(camPose.position, fwd, out hit, 1.5f))
                 {
-                    if (hit.collider.gameObject.name != characterToFollow.name)
+                    if (hit.collider.gameObject.name != characterToFollow.name && hit.transform.tag != "Door")
                     {
                         desiredPosition = this.characterToFollow.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Neck/mc_Ad_Head").position;
                     }
