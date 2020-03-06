@@ -8,6 +8,8 @@ public class ProtagControlScript : MonoBehaviour
     public float slowSpeed;
 
     private int toggleSpeed;
+    private bool InputMapToCircular = true;
+
     private bool isJumping = false;
 
     private Animator anim;
@@ -26,6 +28,13 @@ public class ProtagControlScript : MonoBehaviour
         UpdateToggleSpeed();
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
+
+        if (InputMapToCircular)
+        {
+            // make coordinates circular
+            h = h * Mathf.Sqrt(1f - 0.5f * v * v);
+            v = v * Mathf.Sqrt(1f - 0.5f * h * h);
+        }
 
         float forwardSpeed = v * toggleSpeed / 3f;
         anim.SetFloat("VSpeed", forwardSpeed);
@@ -99,6 +108,22 @@ public class ProtagControlScript : MonoBehaviour
         } else
         {
             isJumping = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Platform"))
+        {
+            this.gameObject.transform.parent = other.transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Platform"))
+        {
+            this.gameObject.transform.parent = null;
         }
     }
 
