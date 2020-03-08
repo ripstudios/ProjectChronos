@@ -24,7 +24,7 @@ public class TimeShift : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        mana = 10f;
+        mana = maxMana;
         hud.maxValue = maxMana;
     }
 

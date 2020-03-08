@@ -52,6 +52,8 @@ public class RobotEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetFloat("vely", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
+        Debug.Log(navMeshAgent.velocity.magnitude / navMeshAgent.speed);
         if (TimeShift.Instance.fast)
         {
             anim.speed = fastSpeed;
