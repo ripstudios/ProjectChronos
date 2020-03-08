@@ -18,6 +18,7 @@ public class ProtagControlScript : MonoBehaviour
     private bool InputMapToCircular = true;
     private bool isJumping = false;
     private CanvasGroup canvasGroup;
+    private SwordCollector swordCollector;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class ProtagControlScript : MonoBehaviour
         Time.timeScale = 1f;
         TimeShift.Instance.fast = true;
         TimeShift.Instance.hud = timeShiftHud;
+        swordCollector = GetComponent<SwordCollector>();
     }
 
     // Update is called once per frame
@@ -94,10 +96,12 @@ public class ProtagControlScript : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.Q)) {
-            // TODO and check if he has sword
-            anim.Play("Attack");
-            attacking = true;
-            Invoke("DoneAttacking", 1.5f);
+            if (swordCollector.hasSword)
+            {
+                anim.Play("Attack");
+                attacking = true;
+                Invoke("DoneAttacking", 1.3f);
+            }
         }
 
         // Player character no longer timeshifts
