@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RestartScene : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
-            SceneManager.LoadScene("tutorial");            
-        }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);            
     }
 }

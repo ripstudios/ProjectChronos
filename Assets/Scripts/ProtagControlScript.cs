@@ -10,13 +10,14 @@ public class ProtagControlScript : MonoBehaviour
     public bool attacking;
     public float fastSpeed = 1.0f;
     public float slowSpeed = 1.0f;
-    public Text gameOver;
+    public Canvas gameOverMenu;
+    public Slider timeShiftHud;
 
     private Animator anim;
     private int toggleSpeed;
     private bool InputMapToCircular = true;
-
     private bool isJumping = false;
+    private CanvasGroup canvasGroup;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,13 @@ public class ProtagControlScript : MonoBehaviour
         anim = GetComponent<Animator>();
         toggleSpeed = 9;
         attacking = false;
+        canvasGroup = gameOverMenu.GetComponent<CanvasGroup>();
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0f;
+        Time.timeScale = 1f;
+        TimeShift.Instance.fast = true;
+        TimeShift.Instance.hud = timeShiftHud;
     }
 
     // Update is called once per frame
@@ -187,7 +195,9 @@ public class ProtagControlScript : MonoBehaviour
 
     public void GameOver()
     {
-        gameOver.text = "You Died";
-        Time.timeScale = 0;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+        Time.timeScale = 0f;
     }
 }

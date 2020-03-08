@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeShift : MonoBehaviour
 {
     public static TimeShift Instance { get; private set; }
 
     public bool fast = true;
+    public Slider hud;
+    public float maxMana = 10f;
+
+    private float mana;
 
     private void Awake()
     {
@@ -19,6 +24,8 @@ public class TimeShift : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        mana = 10f;
+        hud.maxValue = maxMana;
     }
 
     void Update()
@@ -27,5 +34,20 @@ public class TimeShift : MonoBehaviour
         {
             fast = !fast;
         }
+
+        if (!fast)
+        {
+            mana -= Time.deltaTime;
+        } else
+        {
+            mana = Mathf.Min(mana += Time.deltaTime, maxMana);
+        }
+
+        if (mana <= 0 && !fast)
+        {
+            Debug.Log("Out of time!");
+            fast = true;
+        }
+        hud.value = mana;
     }
 }

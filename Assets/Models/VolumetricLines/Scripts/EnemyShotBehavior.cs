@@ -20,14 +20,9 @@ public class EnemyShotBehavior : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.TryGetComponent(out Rigidbody rb))
+        if (!c.TryGetComponent(out EnemyShotBehavior beam))
         {
-            ProtagControlScript player = rb.gameObject.GetComponent<ProtagControlScript>();
-            if (player != null)
-            {
-                ProtagControlScript.Instance.GameOver();
-            }
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
     }
 }
