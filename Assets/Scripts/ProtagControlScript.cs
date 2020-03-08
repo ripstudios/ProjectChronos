@@ -100,7 +100,7 @@ public class ProtagControlScript : MonoBehaviour
             {
                 anim.Play("Attack");
                 attacking = true;
-                Invoke("DoneAttacking", 1.3f);
+                Invoke("DoneAttacking", 1f);
             }
         }
 
