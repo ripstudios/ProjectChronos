@@ -14,6 +14,7 @@ public class RobotEnemyController : MonoBehaviour
     public GameObject pewpew;
     public float fastSpeed;
     public float slowSpeed;
+    public float rotationSmoothSpeed;
 
     private AIState aiState;
     private Animator anim;
@@ -96,8 +97,7 @@ public class RobotEnemyController : MonoBehaviour
 
     void Fire()
     {
-        //TODO Interpolate with animation
-        this.transform.LookAt(ProtagControlScript.Instance.transform);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(ProtagControlScript.Instance.transform.position - this.transform.position), this.rotationSmoothSpeed * Time.deltaTime);
         anim.SetBool("firing", true);
     }
 

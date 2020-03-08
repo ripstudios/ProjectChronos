@@ -12073,6 +12073,16 @@ PrefabInstance:
       propertyPath: fastSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
+        type: 3}
+      propertyPath: rotationSmoothingSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
+        type: 3}
+      propertyPath: rotationSmoothSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 639071937802225649, guid: fb665f2b3e17e4256bc4a020945ec0b9,
         type: 3}
       propertyPath: m_LocalPosition.x
