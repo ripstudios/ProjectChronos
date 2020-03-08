@@ -25,6 +25,7 @@ public class RobotEnemyController : MonoBehaviour
     private float room2MaxX;
     private float room2MaxZ;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    private DoorScript doorScript;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class RobotEnemyController : MonoBehaviour
         newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
         muzzle = newRifle.transform.GetChild(0).gameObject;
         this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
+        this.doorScript = GameObject.Find("/Room 2/Door & Door Frame/door").GetComponent<DoorScript>();
     }
 
     // Start is called before the first frame update
@@ -92,7 +94,7 @@ public class RobotEnemyController : MonoBehaviour
     
     private void OnDestroy()
     {
-        // Enable Room 2 door
+        doorScript.enabled = true;
     }
 
     void Fire()
