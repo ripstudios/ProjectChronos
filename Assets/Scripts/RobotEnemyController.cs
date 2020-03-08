@@ -7,8 +7,8 @@ public class RobotEnemyController : MonoBehaviour
     public Transform rightGunBone;
     public GameObject rifle;
     public GameObject pewpew;
-    public float fastSpeed = 3.0f;
-    public float slowSpeed = 0.1f;
+    public float fastSpeed;
+    public float slowSpeed;
 
     private Animator anim;
     private GameObject newRifle;
