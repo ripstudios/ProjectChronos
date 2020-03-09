@@ -89,6 +89,7 @@ public class RobotEnemyController : MonoBehaviour
                     this.navMeshAgent.speed = 1.5f;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
+                    this.SetNextWaypoint();
                     Debug.Log("AIState changed to Idle");
                 }
                 else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
