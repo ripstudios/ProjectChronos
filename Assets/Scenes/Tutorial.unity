@@ -8727,12 +8727,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269508917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d00710d786e435d8bd81b4b7fd0006, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cb20a158c3b3534b8734772388d7f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 1820721681}
+  characterToFollow: {fileID: 605477542}
+  Obstruction: {fileID: 0}
   smoothTime: 0.1
   maxSpeed: 50
-  characterToFollow: {fileID: 605477542}
+  desiredLoc: {x: 0, y: 0, z: 0}
 --- !u!4 &1271329138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7365178120900720969, guid: ded2d9181985a49409227e780aa8ac45,
