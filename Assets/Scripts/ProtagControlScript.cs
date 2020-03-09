@@ -12,7 +12,6 @@ public class ProtagControlScript : MonoBehaviour
     public float slowSpeed = 1.0f;
     public Canvas gameOverMenu;
     public Slider timeShiftHud;
-    public GameObject camera;
 
     private Animator anim;
     private int toggleSpeed;
@@ -96,7 +95,7 @@ public class ProtagControlScript : MonoBehaviour
             anim.SetBool("Jumping", false);
         }
 
-        if (Input.GetKey(KeyCode.Q)) {
+        if (Input.GetButtonDown("Fire1")) {
             if (swordCollector.hasSword)
             {
                 anim.Play("Attack");
@@ -200,7 +199,6 @@ public class ProtagControlScript : MonoBehaviour
 
     public void GameOver()
     {
-        camera.GetComponent<CameraFollow>().enabled = false;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
