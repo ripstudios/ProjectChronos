@@ -1,4 +1,8 @@
 # Project Chronos 
+Name: RIP Studios
+Members: Kavin Shravan Krishnan, Lang Wu, Peter Everett Zupke, Rachel M Techau, Semin Choi, Yong Jian Quek
+
+Built on Unity 2019.2.19f1
 
 ## Sources 
 ### Models & Animations 
@@ -13,10 +17,10 @@ Character Sword Model
 - [LowPoly Cyber Ninja Sword by Cole](https://assetstore.unity.com/packages/3d/props/weapons/lowpoly-cyber-ninja-sword-129464) 
 
 Robot Enemy Model & Animations 
+- [Sci-Fi Soldier](https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi-soldier-29559)
 
-Human Enemy Robot & Animations 
-
-Environment 
+Environment
+- [Futuristic Panel Textures LITE](https://assetstore.unity.com/packages/2d/textures-materials/futuristic-panel-textures-lite-80176)
 
 ### Scripts 
 EventManager.cs - Jeff Wilson 
