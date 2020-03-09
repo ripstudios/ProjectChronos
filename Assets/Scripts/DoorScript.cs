@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
+    public bool doorEnabled = true;
     public float fastSpeed = 1.0f;
     public float slowSpeed = 0.5f;
     public AudioSource open;
@@ -32,14 +33,14 @@ public class DoorScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+        if (this.doorEnabled && other.CompareTag("Player")) {
             anim.SetBool("open", true);
             open.Play();
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Player")) {
+        if (this.doorEnabled && other.CompareTag("Player")) {
             anim.SetBool("open", false);
         }
     }

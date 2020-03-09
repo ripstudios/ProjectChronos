@@ -107,7 +107,7 @@ public class RobotEnemyController : MonoBehaviour
     
     private void OnDestroy()
     {
-        doorScript.enabled = true;
+        doorScript.doorEnabled = true;
     }
 
     private void SetNextWaypoint()
