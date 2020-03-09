@@ -23,6 +23,8 @@ public class ProtagControlScript : MonoBehaviour
     private CanvasGroup canvasGroup;
     private SwordCollector swordCollector;
 
+    private float mouseX, mouseY;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +68,20 @@ public class ProtagControlScript : MonoBehaviour
         }
 
         // TODO: have rotation also covered by root motion animations
-        this.transform.rotation = this.transform.rotation * Quaternion.AngleAxis(h * Time.deltaTime * 200, Vector3.up);
+
+        if (h != 0) {
+            this.transform.rotation = this.transform.rotation * Quaternion.AngleAxis(h * Time.deltaTime * 200, Vector3.up);
+            h = 0;
+        } else {
+            float lastMouseX = mouseX;
+            mouseX += Input.GetAxis("Mouse X");
+  
+            if (lastMouseX != mouseX) {
+                h = mouseX;
+            }
+        }
+
+
 
         // Looks uber weird
         if (v == 0 && h != 0) { 

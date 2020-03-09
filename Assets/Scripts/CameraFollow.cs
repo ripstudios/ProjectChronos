@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    float rotationSpeed = 0.75f;
+    float rotationSpeed = 2.0f;
     public Transform Target;
     private Transform Player;
     public GameObject characterToFollow;
@@ -30,18 +30,15 @@ public class CameraFollow : MonoBehaviour
     {
         Player = characterToFollow.transform;
         Obstruction = Target;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         offset = transform.position - Player.transform.position;
         distance = offset.magnitude;
         playerPrevPos = Player.transform.position;
         height = transform.position.y;
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         CamControl();
-        // ViewObstructed();
     }
     
     void CamControl()
@@ -75,20 +72,6 @@ public class CameraFollow : MonoBehaviour
         mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
         mouseY = Mathf.Clamp(mouseY, -35, 60);
 
-        
-        // playerMoveDir = Player.transform.position - playerPrevPos;
-        
-        // if (playerMoveDir != Vector3.zero)
-        // {
-        //     playerMoveDir = playerMoveDir.normalized;
-        //     desiredLoc = Player.transform.position - playerMoveDir * distance;
-        //     desiredLoc.y = height;
-
-        //     // transform.position = Vector3.SmoothDamp(transform.position, desiredLoc, ref currentPositionCorrectionVelocity, smoothTime, maxSpeed, Time.deltaTime);
-            
-        //     playerPrevPos = Player.transform.position;
-        // }
-
         transform.LookAt(Target);
 
 
@@ -105,27 +88,4 @@ public class CameraFollow : MonoBehaviour
         
     }
     
-
-    // void ViewObstructed()
-    // {
-    //     RaycastHit hit;
-
-    //     if (Physics.Raycast(transform.position, Target.position - transform.position, out hit, 4.5f))
-    //     {
-    //         if (hit.collider.gameObject.tag != "Player")
-    //         {
-    //             Obstruction = hit.transform;
-    //             Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
-                
-    //             if(Vector3.Distance(Obstruction.position, transform.position) >= 3f && Vector3.Distance(transform.position, Target.position) >= 1.5f)
-    //                 transform.Translate(Vector3.forward * zoomSpeed * Time.deltaTime);
-    //         }
-    //         else
-    //         {
-    //             Obstruction.gameObject.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-    //             if (Vector3.Distance(transform.position, Target.position) < 4.5f)
-    //                 transform.Translate(Vector3.back * zoomSpeed * Time.deltaTime);
-    //         }
-    //     }
-    // }
 }
