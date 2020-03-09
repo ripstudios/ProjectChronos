@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class PauseMenuToggle : MonoBehaviour
 {
+    public GameObject camera;
 
     private CanvasGroup canvasGroup;
 
@@ -27,6 +28,10 @@ public class PauseMenuToggle : MonoBehaviour
                     canvasGroup.blocksRaycasts = false;
                     canvasGroup.alpha = 0f;
 
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    camera.GetComponent<CameraFollow>().enabled = true;
+
                     Time.timeScale = 1f;
                 }
                 else
@@ -34,6 +39,10 @@ public class PauseMenuToggle : MonoBehaviour
                     canvasGroup.interactable = true;
                     canvasGroup.blocksRaycasts = true;
                     canvasGroup.alpha = 1f;
+
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    camera.GetComponent<CameraFollow>().enabled = false;
 
                     Time.timeScale = 0f;
                 }

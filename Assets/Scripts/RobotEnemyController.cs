@@ -132,7 +132,13 @@ public class RobotEnemyController : MonoBehaviour
 
     void Fire()
     {
-        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(ProtagControlScript.Instance.transform.position - this.transform.position), this.rotationSmoothSpeed * Time.deltaTime);
+        if (TimeShift.Instance.fast)
+        {
+            this.transform.LookAt(ProtagControlScript.Instance.transform.position);
+        } else
+        {
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(ProtagControlScript.Instance.transform.position - this.transform.position), this.rotationSmoothSpeed * Time.deltaTime);
+        }
         anim.SetBool("firing", true);
     }
 

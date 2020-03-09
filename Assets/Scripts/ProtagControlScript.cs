@@ -12,15 +12,18 @@ public class ProtagControlScript : MonoBehaviour
     public float fastSpeed = 1.0f;
     public float slowSpeed = 1.0f;
     public Canvas gameOverMenu;
+    public Canvas stageClearMenu;
     public Slider timeShiftHud;
     public GameObject ragdoll;
+    public GameObject camera;
 
     private Animator anim;
     private AudioSource swordSwing;
     private int toggleSpeed;
     private bool InputMapToCircular = true;
     private bool isJumping = false;
-    private CanvasGroup canvasGroup;
+    private CanvasGroup gameOver;
+    private CanvasGroup stageClear;
     private SwordCollector swordCollector;
 
     private float mouseX, mouseY;
@@ -34,14 +37,22 @@ public class ProtagControlScript : MonoBehaviour
         attacking = false;
         dead = false;
         swordSwing = this.transform.Find("SwordSwing").GetComponent<AudioSource>();
-        canvasGroup = gameOverMenu.GetComponent<CanvasGroup>();
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0f;
+
+        gameOver = gameOverMenu.GetComponent<CanvasGroup>();
+        gameOver.interactable = false;
+        gameOver.blocksRaycasts = false;
+        gameOver.alpha = 0f;
+
+        stageClear = stageClearMenu.GetComponent<CanvasGroup>();
+        stageClear.interactable = false;
+        stageClear.blocksRaycasts = false;
+        stageClear.alpha = 0f;
+
         Time.timeScale = 1f;
         TimeShift.Instance.fast = true;
         TimeShift.Instance.hud = timeShiftHud;
         swordCollector = GetComponent<SwordCollector>();
+        
     }
 
     // Update is called once per frame
@@ -221,6 +232,10 @@ public class ProtagControlScript : MonoBehaviour
 
     public void GameOver()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        camera.GetComponent<CameraFollow>().enabled = false;
+
         Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
         Transform[] currentJoints = GetComponentsInChildren<Transform>();
 
@@ -237,11 +252,23 @@ public class ProtagControlScript : MonoBehaviour
             }
         }
         dead = true;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha = 1f;
+        gameOver.interactable = true;
+        gameOver.blocksRaycasts = true;
+        gameOver.alpha = 1f;
         this.gameObject.SetActive(false);
         Invoke("EndTime", 0.5f);
+    }
+
+    public void StageClear()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        camera.GetComponent<CameraFollow>().enabled = false;
+
+        stageClear.interactable = true;
+        stageClear.blocksRaycasts = true;
+        stageClear.alpha = 1f;
+        Invoke("EndTime", 0);
     }
 
     void EndTime()

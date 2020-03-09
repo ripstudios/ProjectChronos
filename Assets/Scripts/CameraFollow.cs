@@ -34,6 +34,8 @@ public class CameraFollow : MonoBehaviour
         distance = offset.magnitude;
         playerPrevPos = Player.transform.position;
         height = transform.position.y;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
