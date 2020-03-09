@@ -68,6 +68,7 @@ public class ProtagControlScript : MonoBehaviour
         }
 
         // TODO: have rotation also covered by root motion animations
+        // TODO: Also allow rotation with keys
 
         if (h != 0) {
             this.transform.rotation = this.transform.rotation * Quaternion.AngleAxis(h * Time.deltaTime * 200, Vector3.up);

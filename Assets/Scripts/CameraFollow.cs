@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    float rotationSpeed = 2.0f;
+    float rotationSpeed = 5.0f;
     public Transform Target;
     private Transform Player;
     public GameObject characterToFollow;
@@ -82,6 +82,8 @@ public class CameraFollow : MonoBehaviour
         else
         {
             Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+
+            // TODO: Also allow rotation with keys
             Player.rotation = Quaternion.Euler(0, mouseX, 0);
         }
 
