@@ -5,13 +5,14 @@ public class RobotEnemyController : MonoBehaviour
 {
     private enum AIState
     {
-        Idle,
+        Patrol,
         Attack
     };
 
     public Transform rightGunBone;
     public GameObject rifle;
     public GameObject pewpew;
+    public GameObject[] waypoints;
     public float fastSpeed;
     public float slowSpeed;
     public float rotationSmoothSpeed;
@@ -24,6 +25,7 @@ public class RobotEnemyController : MonoBehaviour
     private float room2MinZ;
     private float room2MaxX;
     private float room2MaxZ;
+    private int currWaypoint;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private DoorScript doorScript;
 
@@ -37,12 +39,13 @@ public class RobotEnemyController : MonoBehaviour
         muzzle = newRifle.transform.GetChild(0).gameObject;
         this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         this.doorScript = GameObject.Find("/Room 2/Door & Door Frame/door").GetComponent<DoorScript>();
+        this.currWaypoint = -1;
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        this.aiState = AIState.Idle;
+        this.aiState = AIState.Patrol;
         this.room2MinX = GameObject.Find("/Room 2/wall/decorative_wall_3 (7)").transform.position.x;
         this.room2MinZ = GameObject.Find("/Room 2/wall/glass_panel_1 (1)").transform.position.z;
         this.room2MaxX = GameObject.Find("/Room 2/wall/decorative_wall_3 (3)").transform.position.x;
@@ -66,17 +69,25 @@ public class RobotEnemyController : MonoBehaviour
         bool isPlayerInRoom2 = ProtagControlScript.Instance.transform.position.x > this.room2MinX && ProtagControlScript.Instance.transform.position.x < this.room2MaxX && ProtagControlScript.Instance.transform.position.z > this.room2MinZ && ProtagControlScript.Instance.transform.position.z < this.room2MaxZ;
         switch (this.aiState)
         {
-            case AIState.Idle:
+            case AIState.Patrol:
                 if (isPlayerInRoom2)
                 {
                     this.aiState = AIState.Attack;
+                    this.navMeshAgent.speed = 3.5f;
+                    this.navMeshAgent.stoppingDistance = 7;
                     Debug.Log("AIState changed to Attack");
+                }
+                else if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance < Mathf.Epsilon && !navMeshAgent.pathPending)
+                {
+                    SetNextWaypoint();
                 }
                 break;
             case AIState.Attack:
                 if (!isPlayerInRoom2)
                 {
-                    this.aiState = AIState.Idle;
+                    this.aiState = AIState.Patrol;
+                    this.navMeshAgent.speed = 1.5f;
+                    this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
                     Debug.Log("AIState changed to Idle");
                 }
@@ -97,6 +108,26 @@ public class RobotEnemyController : MonoBehaviour
     private void OnDestroy()
     {
         doorScript.enabled = true;
+    }
+
+    private void SetNextWaypoint()
+    {
+        if (this.waypoints == null || this.waypoints.Length == 0)
+        {
+            Debug.LogError("No waypoints specified");
+        }
+        else
+        {
+            if (this.currWaypoint == this.waypoints.Length - 1)
+            {
+                this.currWaypoint = 0;
+            }
+            else
+            {
+                this.currWaypoint += 1;
+            }
+            this.navMeshAgent.SetDestination(this.waypoints[this.currWaypoint].transform.position);
+        }
     }
 
     void Fire()
