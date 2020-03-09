@@ -36,7 +36,7 @@ public class RobotEnemyController : MonoBehaviour
         newRifle.transform.parent = rightGunBone;
         newRifle.transform.localPosition = Vector3.zero;
         newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
-        muzzle = newRifle.transform.GetChild(0).gameObject;
+        muzzle = newRifle.transform.Find("Muzzle").gameObject;
         this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         this.doorScript = GameObject.Find("/Room 2/Door & Door Frame/door").GetComponent<DoorScript>();
         this.currWaypoint = -1;
@@ -64,16 +64,14 @@ public class RobotEnemyController : MonoBehaviour
             anim.speed = slowSpeed;
         }
 
-        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
         bool isPlayerInRoom2 = ProtagControlScript.Instance.transform.position.x > this.room2MinX && ProtagControlScript.Instance.transform.position.x < this.room2MaxX && ProtagControlScript.Instance.transform.position.z > this.room2MinZ && ProtagControlScript.Instance.transform.position.z < this.room2MaxZ;
         switch (this.aiState)
         {
             case AIState.Patrol:
-                velocity /= 2;
+
                 if (isPlayerInRoom2)
                 {
                     this.aiState = AIState.Attack;
-                    this.navMeshAgent.speed = 2.5f;
                     this.navMeshAgent.stoppingDistance = 7;
                     Debug.Log("AIState changed to Attack");
                 }
@@ -86,7 +84,6 @@ public class RobotEnemyController : MonoBehaviour
                 if (!isPlayerInRoom2)
                 {
                     this.aiState = AIState.Patrol;
-                    this.navMeshAgent.speed = 1.25f;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
                     this.SetNextWaypoint();
@@ -104,8 +101,8 @@ public class RobotEnemyController : MonoBehaviour
             default:
                 break;
         }
+        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
         anim.SetFloat("vely", velocity);
-        Debug.Log(velocity);
     }
     
     private void OnDestroy()
@@ -141,6 +138,8 @@ public class RobotEnemyController : MonoBehaviour
 
     void CreateBeam()
     {
+        AudioSource blasterSource = newRifle.transform.Find("PewPew").gameObject.GetComponent<AudioSource>();
+        blasterSource.PlayOneShot(blasterSource.clip);
         Instantiate(pewpew, muzzle.transform.position, muzzle.transform.rotation);
     }
 }

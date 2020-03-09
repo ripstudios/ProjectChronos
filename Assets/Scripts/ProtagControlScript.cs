@@ -8,12 +8,15 @@ public class ProtagControlScript : MonoBehaviour
     public static ProtagControlScript Instance { get; private set; }
 
     public bool attacking;
+    public bool dead;
     public float fastSpeed = 1.0f;
     public float slowSpeed = 1.0f;
     public Canvas gameOverMenu;
     public Slider timeShiftHud;
+    public GameObject ragdoll;
 
     private Animator anim;
+    private AudioSource swordSwing;
     private int toggleSpeed;
     private bool InputMapToCircular = true;
     private bool isJumping = false;
@@ -27,6 +30,8 @@ public class ProtagControlScript : MonoBehaviour
         anim = GetComponent<Animator>();
         toggleSpeed = 9;
         attacking = false;
+        dead = false;
+        swordSwing = this.transform.Find("SwordSwing").GetComponent<AudioSource>();
         canvasGroup = gameOverMenu.GetComponent<CanvasGroup>();
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
@@ -98,6 +103,7 @@ public class ProtagControlScript : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) {
             if (swordCollector.hasSword)
             {
+                swordSwing.Play();
                 anim.Play("Attack");
                 attacking = true;
                 Invoke("DoneAttacking", 1f);
@@ -199,9 +205,31 @@ public class ProtagControlScript : MonoBehaviour
 
     public void GameOver()
     {
+        Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
+        Transform[] currentJoints = GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < ragdollJoints.Length; i++)
+        {
+            for (int q = 0; q < currentJoints.Length; q++)
+            {
+                if (currentJoints[q].name.CompareTo(ragdollJoints[i].name) == 0)
+                {
+                    ragdollJoints[i].position = currentJoints[q].position;
+                    ragdollJoints[i].rotation = currentJoints[q].rotation;
+                    break;
+                }
+            }
+        }
+        dead = true;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
-        Time.timeScale = 0f;
+        this.gameObject.SetActive(false);
+        Invoke("EndTime", 0.5f);
+    }
+
+    void EndTime()
+    {
+        Time.timeScale = 0;
     }
 }
