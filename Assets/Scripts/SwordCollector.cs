@@ -32,8 +32,8 @@ public class SwordCollector : MonoBehaviour
 
     public void CollectSword() {
         sword = Instantiate<Rigidbody>(swordPrefab, handHold);
+        sword.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0)); // set this to modify sword rotation so holding is more realistic
         sword.transform.localPosition = new Vector3(0, 0, 0);
-        // sword.transform.localRotation // set this to modify sword rotation so holding is more realistic
         sword.isKinematic = true;
         hasSword = true;
     }
