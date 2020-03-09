@@ -55,8 +55,6 @@ public class RobotEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetFloat("vely", navMeshAgent.velocity.magnitude / navMeshAgent.speed);
-        Debug.Log(navMeshAgent.velocity.magnitude / navMeshAgent.speed);
         if (TimeShift.Instance.fast)
         {
             anim.speed = fastSpeed;
@@ -66,14 +64,16 @@ public class RobotEnemyController : MonoBehaviour
             anim.speed = slowSpeed;
         }
 
+        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
         bool isPlayerInRoom2 = ProtagControlScript.Instance.transform.position.x > this.room2MinX && ProtagControlScript.Instance.transform.position.x < this.room2MaxX && ProtagControlScript.Instance.transform.position.z > this.room2MinZ && ProtagControlScript.Instance.transform.position.z < this.room2MaxZ;
         switch (this.aiState)
         {
             case AIState.Patrol:
+                velocity /= 2;
                 if (isPlayerInRoom2)
                 {
                     this.aiState = AIState.Attack;
-                    this.navMeshAgent.speed = 3.5f;
+                    this.navMeshAgent.speed = 2.5f;
                     this.navMeshAgent.stoppingDistance = 7;
                     Debug.Log("AIState changed to Attack");
                 }
@@ -86,7 +86,7 @@ public class RobotEnemyController : MonoBehaviour
                 if (!isPlayerInRoom2)
                 {
                     this.aiState = AIState.Patrol;
-                    this.navMeshAgent.speed = 1.5f;
+                    this.navMeshAgent.speed = 1.25f;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
                     this.SetNextWaypoint();
@@ -104,6 +104,8 @@ public class RobotEnemyController : MonoBehaviour
             default:
                 break;
         }
+        anim.SetFloat("vely", velocity);
+        Debug.Log(velocity);
     }
     
     private void OnDestroy()
