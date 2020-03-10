@@ -1,7 +1,8 @@
 # Project Chronos 
-Team Name: RIP Studios
+**Presented by RIP Studios**
 Members: Kavin Shravan Krishnan, Lang Wu, Peter Everett Zupke, Rachel M Techau, Semin Choi, Yong Jian Quek
 
+## Description
 You wake up in a room alone, with nothing but a single sword in front of you. You don’t know who you are or how you got there. All you hear is a voice that taunts you. 
 
 "Kill Them All. Reach The End. All Of Time Is Yours”. 
@@ -78,7 +79,7 @@ Background Music
 - [CXNTRAST - Saturn](https://www.youtube.com/watch?v=B5sNT98RVOU)
 
 ### Scripts 
-EventManager.cs - Jeff Wilson for CS4455/CS6457 Spring 2020 Video Game Design at Georgia Institute of Technology
+- EventManager.cs - Jeff Wilson for CS4455/CS6457 Spring 2020 Video Game Design at Georgia Institute of Technology
 
 ## Testing Steps
 1. Launch game
