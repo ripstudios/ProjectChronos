@@ -1,5 +1,6 @@
 # Project Chronos 
-Name: RIP Studios
+Team Name: RIP Studios
+
 Members: Kavin Shravan Krishnan, Lang Wu, Peter Everett Zupke, Rachel M Techau, Semin Choi, Yong Jian Quek
 
 Built on Unity 2019.2.19f1
