@@ -1,11 +1,12 @@
 # Project Chronos 
 **Presented by RIP Studios**
+
 Members: Kavin Shravan Krishnan, Lang Wu, Peter Everett Zupke, Rachel M Techau, Semin Choi, Yong Jian Quek
 
 ## Description
 You wake up in a room alone, with nothing but a single sword in front of you. You don’t know who you are or how you got there. All you hear is a voice that taunts you. 
 
-"Kill Them All. Reach The End. All Of Time Is Yours”. 
+**"Kill Them All. Reach The End. All Of Time Is Yours”.**
 
 You reach for the sword. It's time to kill.
 
