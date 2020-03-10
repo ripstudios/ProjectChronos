@@ -64,6 +64,7 @@ Character Sword Model
 
 Robot Enemy Model & Animations 
 - [Sci-Fi Soldier](https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi-soldier-29559)
+- [Volumetric Lines](https://assetstore.unity.com/packages/tools/particles-effects/volumetric-lines-29160)
 
 Environment
 - [Futuristic Panel Textures LITE](https://assetstore.unity.com/packages/2d/textures-materials/futuristic-panel-textures-lite-80176)
