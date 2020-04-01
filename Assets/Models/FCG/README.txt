@@ -1,1 +1,0 @@
-Source: FGC Male Adam - by Freedom's Gate. Purchased from Unity Asset Store on 2/15/2020. Link: https://assetstore.unity.com/packages/3d/characters/humanoids/fgc-male-adam-70002

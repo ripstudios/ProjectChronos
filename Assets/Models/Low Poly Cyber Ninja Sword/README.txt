@@ -1,1 +1,0 @@
-Source: LowPoly Cyber Ninja Sword - by Cole, 2/4/2019. Purchased from Unity Asset Store on 2/16/2020. Link: https://assetstore.unity.com/packages/3d/props/weapons/lowpoly-cyber-ninja-sword-129464

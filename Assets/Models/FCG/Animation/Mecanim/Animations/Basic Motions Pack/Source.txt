@@ -1,0 +1,1 @@
+Source: Basic Motions FREE Pack - Kevin Iglesias. Purchased from Unity Asset Store on 2/21/2020. Link: https://assetstore.unity.com/packages/3d/animations/basic-motions-free-pack-154271

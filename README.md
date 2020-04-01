@@ -52,8 +52,11 @@ Built on Unity 2019.2.19f1
 
 ## Additional Resources
 ### Models & Animations 
-Character Model 
+Protagonist Model 
 - [FGC Male Adam by Freedom's Gate](https://assetstore.unity.com/packages/3d/characters/humanoids/fgc-male-adam-70002) 
+
+Boss Enemy Model
+- [Bodyguards by Batewar](https://assetstore.unity.com/packages/3d/characters/humanoids/bodyguards-31711)
 
 Character Animations 
 - [Basic Motions FREE Pack by Kevin Iglesias](https://assetstore.unity.com/packages/3d/animations/basic-motions-free-pack-154271) 
