@@ -70,7 +70,10 @@ public class ProtagControlScript : MonoBehaviour
         }
 
         float forwardSpeed = v * toggleSpeed / 3f;
+        float strafeSpeed = h * toggleSpeed / 3f;
+
         anim.SetFloat("VSpeed", forwardSpeed);
+        anim.SetFloat("HSpeed", strafeSpeed); 
 
         // Work around for jump animation without root motion
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("jump"))
@@ -81,17 +84,16 @@ public class ProtagControlScript : MonoBehaviour
         // TODO: have rotation also covered by root motion animations
         // TODO: Also allow rotation with keys
 
-        if (h != 0) {
-            this.transform.rotation = this.transform.rotation * Quaternion.AngleAxis(h * Time.deltaTime * 200, Vector3.up);
-            h = 0;
-        } else {
-            float lastMouseX = mouseX;
-            mouseX += Input.GetAxis("Mouse X");
+        // if (h != 0) {
+        //     h = 0;
+        // } else {
+        //     float lastMouseX = mouseX;
+        //     mouseX += Input.GetAxis("Mouse X");
   
-            if (lastMouseX != mouseX) {
-                h = mouseX;
-            }
-        }
+        //     if (lastMouseX != mouseX) {
+        //         h = mouseX;
+        //     }
+        // }
 
 
 
