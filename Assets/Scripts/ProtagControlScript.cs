@@ -139,6 +139,16 @@ public class ProtagControlScript : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("Fire3"))
+        {
+            anim.SetBool("dash", true);
+            swordSwing.Play();
+            anim.Play("Attack");
+            attacking = true;
+            Invoke("DoneAttacking", 1f);
+            Invoke("DoneDashing", 0.1f);
+            
+        }
         // Player character no longer timeshifts
         //// TimeShift functionality
         //if (TimeShift.Instance.fast)
@@ -155,6 +165,11 @@ public class ProtagControlScript : MonoBehaviour
     void DoneAttacking()
     {
         attacking = false;
+    }
+
+    void DoneDashing()
+    {
+        anim.SetBool("dash", false);
     }
 
     void OnAnimatorMove()
