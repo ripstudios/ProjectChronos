@@ -21,7 +21,7 @@ public class ProtagControlScript : MonoBehaviour
     private AudioSource swordSwing;
     private int toggleSpeed;
     private bool InputMapToCircular = true;
-    private bool isJumping = false;
+    private int isJumping = 0;
     private CanvasGroup gameOver;
     private CanvasGroup stageClear;
     private SwordCollector swordCollector;
@@ -115,9 +115,9 @@ public class ProtagControlScript : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (!isJumping)
+            if (isJumping < 2)
             {
-                isJumping = true;
+                isJumping++;
                 // Current jumping solution. Apply strong vertical force to rigidbody
                 Rigidbody rb = GetComponent<Rigidbody>();
                 rb.AddForce(new Vector3(0, 150, 0));
@@ -128,7 +128,7 @@ public class ProtagControlScript : MonoBehaviour
         {
             anim.SetBool("Jumping", false);
         }
-
+        
         if (Input.GetButtonDown("Fire1")) {
             if (swordCollector.hasSword)
             {
@@ -178,11 +178,7 @@ public class ProtagControlScript : MonoBehaviour
         // TODO: use root motion animation for all movements
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
-            isJumping = false;
             this.transform.position = anim.rootPosition;
-        } else
-        {
-            isJumping = true;
         }
     }
 
@@ -192,6 +188,7 @@ public class ProtagControlScript : MonoBehaviour
         {
             this.gameObject.transform.parent = other.transform;
         }
+        isJumping = 0;
     }
 
     private void OnTriggerExit(Collider other)

@@ -19185,6 +19185,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: blue door
       objectReference: {fileID: 0}
+    - target: {fileID: 4653196326912561809, guid: f5751e9a37869c949a6edfd85539b886,
+        type: 3}
+      propertyPath: requiredBtns
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5751e9a37869c949a6edfd85539b886, type: 3}
 --- !u!1001 &6203310572551199069

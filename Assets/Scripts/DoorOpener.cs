@@ -5,14 +5,16 @@ using UnityEngine;
 public class DoorOpener : MonoBehaviour
 {
     public GameObject door;
+    public float timeOpen = 3.0f;
 
     private Animator anim;
-    private Animator doorAnim;
+    private TriggeredDoor targetDoor;
+    private bool unpressed = true;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        doorAnim = door.GetComponent<Animator>();
+        targetDoor = door.GetComponent<TriggeredDoor>();
     }
 
     // Update is called once per frame
@@ -22,8 +24,12 @@ public class DoorOpener : MonoBehaviour
         if (c.TryGetComponent(out ProtagControlScript protag))
         {
             anim.SetBool("pressed", true);
-            doorAnim.SetBool("open", true);
-            Invoke("CloseDoor", 3.0f);
+            if (unpressed)
+            {
+                targetDoor.btnsPressed++;
+                unpressed = false;
+                Invoke("CloseDoor", timeOpen);
+            }
         }
     }
 
@@ -37,6 +43,7 @@ public class DoorOpener : MonoBehaviour
 
     void CloseDoor()
     {
-        doorAnim.SetBool("open", false);
+        unpressed = true;
+        targetDoor.btnsPressed--;
     }
 }
