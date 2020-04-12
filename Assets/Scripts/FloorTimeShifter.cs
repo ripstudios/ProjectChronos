@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class FloorTimeShifter : MonoBehaviour
 {
-    public float fastSpeed;
-    public float slowSpeed;
+    public float fastSpeed = 1.0f;
+    public float slowSpeed = 0.2f;
 
     private Animator anim;
 
