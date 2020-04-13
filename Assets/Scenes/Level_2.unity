@@ -4198,6 +4198,11 @@ PrefabInstance:
       propertyPath: ragdoll
       value: 
       objectReference: {fileID: 761027031}
+    - target: {fileID: 8292496296534851499, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
+        type: 3}
+      propertyPath: raycastDist
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8292496297076228521, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
         type: 3}
       propertyPath: m_Name

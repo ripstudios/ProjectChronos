@@ -8,6 +8,7 @@ public class ProtagControlScript : MonoBehaviour
     public static ProtagControlScript Instance { get; private set; }
 
     public bool attacking;
+    public bool dashing = false;
     public bool dead;
     public float fastSpeed = 1.0f;
     public float slowSpeed = 1.0f;
@@ -16,6 +17,7 @@ public class ProtagControlScript : MonoBehaviour
     public Slider timeShiftHud;
     public GameObject ragdoll;
     public GameObject camera;
+  
 
     private Animator anim;
     private AudioSource swordSwing;
@@ -25,6 +27,9 @@ public class ProtagControlScript : MonoBehaviour
     private CanvasGroup gameOver;
     private CanvasGroup stageClear;
     private SwordCollector swordCollector;
+    private Vector3 dashEnd;
+    private Vector3 dashDir;
+    public float raycastDist = 5f;
 
     private float mouseX, mouseY;
 
@@ -141,13 +146,28 @@ public class ProtagControlScript : MonoBehaviour
 
         if (Input.GetButtonDown("Fire3"))
         {
+            RaycastHit hit;
+            dashDir = this.transform.forward;
+            if (Physics.Raycast(this.transform.position, dashDir, out hit, raycastDist))
+            {
+                Debug.Log("dash blocked");
+                dashEnd = this.transform.position + ((hit.distance - 0.3f) * this.transform.forward);
+            } else
+            {
+                dashEnd = this.transform.position + (this.transform.forward * raycastDist);
+            }
             anim.SetBool("dash", true);
             swordSwing.Play();
             anim.Play("Attack");
             attacking = true;
-            Invoke("DoneAttacking", 1f);
-            Invoke("DoneDashing", 0.1f);
-            
+            dashing = true;
+        }
+
+        if (dashing && (this.transform.position - dashEnd).magnitude <= 1)
+        {
+            anim.SetBool("dash", false);
+            attacking = false;
+            dashing = false;
         }
         // Player character no longer timeshifts
         //// TimeShift functionality
