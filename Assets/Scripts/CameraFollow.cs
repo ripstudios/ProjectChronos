@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     private Transform Player;
     public GameObject characterToFollow;
     float mouseX, mouseY;
-
+    float v, h;
     public Transform Obstruction;
     float zoomSpeed = 2f;
     private Vector3 offset;   
@@ -45,6 +45,35 @@ public class CameraFollow : MonoBehaviour
     
     void CamControl()
     {
+        
+        if (Input.GetAxisRaw("Horizontal") != 0 && Input.GetAxisRaw("Vertical") != 0) {
+            mouseX += Input.GetAxisRaw("Horizontal") * 3;
+            mouseY -= Input.GetAxisRaw("Vertical") * 3;
+        } else {
+            mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
+            mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed; 
+        }
+
+
+        mouseY = Mathf.Clamp(mouseY, -35, 60);
+
+
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+        } else
+        {
+            if (!ProtagControlScript.Instance.dashing)
+            {
+                Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
+
+                // TODO: Also allow rotation with keys
+                Player.rotation = Quaternion.Euler(0, mouseX, 0);
+            }
+        }
+        
+
         if (this.characterToFollow != null)
         {
             Transform camPose = this.characterToFollow.transform.Find("CamPos");
@@ -69,30 +98,8 @@ public class CameraFollow : MonoBehaviour
                 this.transform.forward = Vector3.SmoothDamp(this.transform.forward, camPose.forward, ref currentFacingCorrectionVelocity, smoothTime, maxSpeed, Time.deltaTime);
             }
         }
-        
-        mouseX += Input.GetAxis("Mouse X") * rotationSpeed;
-        mouseY -= Input.GetAxis("Mouse Y") * rotationSpeed;
-        mouseY = Mathf.Clamp(mouseY, -35, 60);
 
         transform.LookAt(Target);
-
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-        }
-        else
-        {
-            if (!ProtagControlScript.Instance.dashing)
-            {
-                Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
-
-                // TODO: Also allow rotation with keys
-                Player.rotation = Quaternion.Euler(0, mouseX, 0);
-            }
-        }
-
-        
     }
     
 }

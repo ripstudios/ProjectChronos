@@ -64,8 +64,8 @@ public class ProtagControlScript : MonoBehaviour
     void Update()
     {
         UpdateToggleSpeed();
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
 
         if (InputMapToCircular)
         {
@@ -75,10 +75,14 @@ public class ProtagControlScript : MonoBehaviour
         }
 
         float forwardSpeed = v * toggleSpeed / 3f;
-        float strafeSpeed = h * toggleSpeed / 3f;
+        float strafeSpeed = h * toggleSpeed;
 
         anim.SetFloat("VSpeed", forwardSpeed);
-        anim.SetFloat("HSpeed", strafeSpeed); 
+        anim.SetFloat("HSpeed", 0);
+
+        if (h != 0 && v == 0) {
+            anim.SetFloat("HSpeed", strafeSpeed);
+        }
 
         // Work around for jump animation without root motion
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("jump"))
@@ -103,20 +107,20 @@ public class ProtagControlScript : MonoBehaviour
 
 
         // Looks uber weird
-        if (v == 0 && h != 0) { 
-            if (h > 0)
-            {
-                anim.SetBool("TurningLeft", true);
-            }
-            else if (h < 0)
-            {
-                anim.SetBool("TurningRight", true);
-            }
-        } else
-        {
-            anim.SetBool("TurningLeft", false);
-            anim.SetBool("TurningRight", false);
-        }
+        // if (v == 0 && h != 0) { 
+        //     if (h > 0)
+        //     {
+        //         anim.SetBool("TurningLeft", true);
+        //     }
+        //     else if (h < 0)
+        //     {
+        //         anim.SetBool("TurningRight", true);
+        //     }
+        // } else
+        // {
+        //     anim.SetBool("TurningLeft", false);
+        //     anim.SetBool("TurningRight", false);
+        // }
 
         if (Input.GetButtonDown("Jump"))
         {
