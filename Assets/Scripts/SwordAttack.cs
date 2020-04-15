@@ -18,7 +18,7 @@ public class SwordAttack : MonoBehaviour
         
     void OnTriggerEnter(Collider c)
     {
-        if (ProtagControlScript.Instance.attacking && c.GetComponent<RobotEnemyController>())
+        if (ProtagControlScript.Instance.attacking && (c.GetComponent<RobotEnemyController>() != null || c.GetComponent<HumanEnemyController>() != null))
         {
             Debug.Log("Hit!");
             Destroy(c.gameObject);

@@ -16,15 +16,16 @@ public class RobotEnemyController : MonoBehaviour
     public float fastSpeed;
     public float slowSpeed;
     public float rotationSmoothSpeed;
+    public GameObject guardAreaMinimumX;
+    public GameObject guardAreaMinimumZ;
+    public GameObject guardAreaMaximumX;
+    public GameObject guardAreaMaximumZ;
+    public GameObject guardDoor;
 
     private AIState aiState;
     private Animator anim;
     private GameObject newRifle;
     private GameObject muzzle;
-    private float room2MinX;
-    private float room2MinZ;
-    private float room2MaxX;
-    private float room2MaxZ;
     private int currWaypoint;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private DoorScript doorScript;
@@ -38,7 +39,7 @@ public class RobotEnemyController : MonoBehaviour
         newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
         muzzle = newRifle.transform.Find("Muzzle").gameObject;
         this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        this.doorScript = GameObject.Find("/Room 2/Door & Door Frame/door").GetComponent<DoorScript>();
+        this.doorScript = guardDoor.GetComponent<DoorScript>();
         this.currWaypoint = -1;
     }
 
@@ -46,10 +47,6 @@ public class RobotEnemyController : MonoBehaviour
     private void Start()
     {
         this.aiState = AIState.Patrol;
-        this.room2MinX = GameObject.Find("/Room 2/wall/decorative_wall_3 (7)").transform.position.x;
-        this.room2MinZ = GameObject.Find("/Room 2/wall/glass_panel_1 (1)").transform.position.z;
-        this.room2MaxX = GameObject.Find("/Room 2/wall/decorative_wall_3 (3)").transform.position.x;
-        this.room2MaxZ = GameObject.Find("/Room 2/Door & Door Frame").transform.position.z;
     }
 
     // Update is called once per frame
@@ -64,12 +61,11 @@ public class RobotEnemyController : MonoBehaviour
             anim.speed = slowSpeed;
         }
 
-        bool isPlayerInRoom2 = ProtagControlScript.Instance.transform.position.x > this.room2MinX && ProtagControlScript.Instance.transform.position.x < this.room2MaxX && ProtagControlScript.Instance.transform.position.z > this.room2MinZ && ProtagControlScript.Instance.transform.position.z < this.room2MaxZ;
+        bool isPlayerInRoom = ProtagControlScript.Instance.transform.position.x > this.guardAreaMinimumX.transform.position.x && ProtagControlScript.Instance.transform.position.x < this.guardAreaMaximumX.transform.position.x && ProtagControlScript.Instance.transform.position.z > this.guardAreaMinimumZ.transform.position.z && ProtagControlScript.Instance.transform.position.z < this.guardAreaMaximumZ.transform.position.z;
         switch (this.aiState)
         {
             case AIState.Patrol:
-
-                if (isPlayerInRoom2)
+                if (isPlayerInRoom)
                 {
                     this.aiState = AIState.Attack;
                     this.navMeshAgent.stoppingDistance = 7;
@@ -81,7 +77,7 @@ public class RobotEnemyController : MonoBehaviour
                 }
                 break;
             case AIState.Attack:
-                if (!isPlayerInRoom2)
+                if (!isPlayerInRoom)
                 {
                     this.aiState = AIState.Patrol;
                     this.navMeshAgent.stoppingDistance = 0;
@@ -91,7 +87,8 @@ public class RobotEnemyController : MonoBehaviour
                 }
                 else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
                 {
-                    this.navMeshAgent.SetDestination(GameObject.Find("/FGC_Male_Char_Adam").transform.position);
+                    anim.SetBool("firing", false);
+                    this.navMeshAgent.SetDestination(ProtagControlScript.Instance.transform.position);
                 }
                 else
                 {
@@ -135,7 +132,8 @@ public class RobotEnemyController : MonoBehaviour
         if (TimeShift.Instance.fast)
         {
             this.transform.LookAt(ProtagControlScript.Instance.transform.position);
-        } else
+        }
+        else
         {
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(ProtagControlScript.Instance.transform.position - this.transform.position), this.rotationSmoothSpeed * Time.deltaTime);
         }

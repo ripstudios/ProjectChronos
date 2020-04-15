@@ -2,19 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
 public class HumanEnemyController : MonoBehaviour
 {
-    public int weapon = 3;
+    private enum AIState
+    {
+        Patrol,
+        Attack
+    };
 
+    public int weapon = 3;
+    public GameObject pewpew;
+    public float fastSpeed;
+    public float slowSpeed;
+    public float rotationSmoothSpeed;
+    public GameObject guardAreaMinimumX;
+    public GameObject guardAreaMinimumZ;
+    public GameObject guardAreaMaximumX;
+    public GameObject guardAreaMaximumZ;
+
+    private AIState aiState;
     private Animator anim;
+    private int currWaypoint;
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    private GameObject weaponObject;
 
     private string objectName;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         anim.SetInteger("weapon", weapon);
+        this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
 
         objectName = this.gameObject.name;
 
@@ -27,10 +46,60 @@ public class HumanEnemyController : MonoBehaviour
         ChooseWeapon(weapon);
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        this.aiState = AIState.Patrol;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        if (TimeShift.Instance.fast)
+        {
+            anim.speed = fastSpeed;
+        }
+        else
+        {
+            anim.speed = slowSpeed;
+        }
+
+        bool isPlayerInRoom = ProtagControlScript.Instance.transform.position.x > this.guardAreaMinimumX.transform.position.x && ProtagControlScript.Instance.transform.position.x < this.guardAreaMaximumX.transform.position.x && ProtagControlScript.Instance.transform.position.z > this.guardAreaMinimumZ.transform.position.z && ProtagControlScript.Instance.transform.position.z < this.guardAreaMaximumZ.transform.position.z;
+        switch (this.aiState)
+        {
+            case AIState.Patrol:
+                if (isPlayerInRoom)
+                {
+                    this.aiState = AIState.Attack;
+                    this.navMeshAgent.isStopped = false;
+                    this.navMeshAgent.stoppingDistance = this.weapon == 3 ? 1 : 7;
+                    this.navMeshAgent.speed = this.weapon == 3 ? 12 : 4;
+                    this.navMeshAgent.acceleration = this.weapon == 3 ? 12 : 5;
+                    Debug.Log("AIState changed to Attack");
+                }
+                break;
+            case AIState.Attack:
+                if (!isPlayerInRoom)
+                {
+                    this.aiState = AIState.Patrol;
+                    this.navMeshAgent.isStopped = true;
+                    this.navMeshAgent.stoppingDistance = 0;
+                    this.anim.SetBool("firing", false);
+                    Debug.Log("AIState changed to Idle");
+                }
+                else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
+                {
+                    anim.SetBool("firing", false);
+                    this.navMeshAgent.SetDestination(ProtagControlScript.Instance.transform.position);
+                }
+                else
+                {
+                    Fire();
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     void DeactiveHairAndFace()
@@ -168,40 +237,91 @@ public class HumanEnemyController : MonoBehaviour
         }
     }
 
+    void ActivateWeapon(string objectName)
+    {
+        GameObject obj = GameObject.Find(objectName);
+        obj.SetActive(true);
+    }
+
+    void DeactivateWeapon(string objectName)
+    {
+        GameObject obj = GameObject.Find(objectName);
+        obj.SetActive(false);
+    }
+
     void ChooseWeapon(int i)
     {
-        switch(i)
+        string rifle = objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Rifle";
+        string spacePistol = objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpacePistol";
+        string spaceRifleOld = objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpaceRifleOld";
+        string broadsword = objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Broadsword";
+        switch (i)
         {
             case 0:
-                ActivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Rifle");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpacePistol");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpaceRifleOld");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Broadsword");
+                ActivateWeapon(rifle);
+                DeactivateWeapon(spacePistol);
+                DeactivateWeapon(spaceRifleOld);
+                DeactivateWeapon(broadsword);
+                this.weaponObject = GameObject.Find(rifle);
                 break;
 
             case 1:
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Rifle");
-                ActivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpacePistol");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpaceRifleOld");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Broadsword");
+                DeactivateWeapon(rifle);
+                ActivateWeapon(spacePistol);
+                DeactivateWeapon(spaceRifleOld);
+                DeactivateWeapon(broadsword);
+                this.weaponObject = GameObject.Find(spacePistol);
                 break;
 
             case 2:
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Rifle");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpacePistol");
-                ActivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpaceRifleOld");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Broadsword");
+                DeactivateWeapon(rifle);
+                DeactivateWeapon(spacePistol);
+                ActivateWeapon(spaceRifleOld);
+                DeactivateWeapon(broadsword);
+                this.weaponObject = GameObject.Find(spaceRifleOld);
                 break;
 
             case 3:
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Rifle");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpacePistol");
-                DeactivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/SpaceRifleOld");
-                ActivateMesh(objectName + "/ROOT/Hips/Spine/Spine1/R Clavicle/R UpperArm/R Forearm/R Hand/R Weapon/Broadsword");
+                DeactivateWeapon(rifle);
+                DeactivateWeapon(spacePistol);
+                DeactivateWeapon(spaceRifleOld);
+                ActivateWeapon(broadsword);
+                this.weaponObject = GameObject.Find(broadsword);
                 break;
 
             default:
                 break;
         }
+    }
+
+    private void Fire()
+    {
+        if (TimeShift.Instance.fast)
+        {
+            this.transform.LookAt(ProtagControlScript.Instance.transform.position);
+        }
+        else
+        {
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(ProtagControlScript.Instance.transform.position - this.transform.position), this.rotationSmoothSpeed * Time.deltaTime);
+        }
+        anim.SetBool("firing", true);
+    }
+
+    public void CreateBeam()
+    {
+        Transform muzzleTransform = weaponObject.transform.Find("Muzzle");
+        AudioSource blasterSource = weaponObject.transform.Find("PewPew").gameObject.GetComponent<AudioSource>();
+        blasterSource.PlayOneShot(blasterSource.clip);
+        Instantiate(pewpew, muzzleTransform.position, muzzleTransform.rotation);
+    }
+
+    public void ActivateSword()
+    {
+        weaponObject.GetComponent<CapsuleCollider>().enabled = true;
+    }
+
+    public void DectivateSword()
+    {
+        weaponObject.GetComponent<CapsuleCollider>().enabled = false;
     }
 }
