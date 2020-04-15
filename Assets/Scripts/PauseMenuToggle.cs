@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public class PauseMenuToggle : MonoBehaviour
 {
-    public GameObject camera;
+    public new GameObject camera;
 
     private CanvasGroup canvasGroup;
 
@@ -48,6 +48,5 @@ public class PauseMenuToggle : MonoBehaviour
                 }
             }
         }
-              
     }
 }

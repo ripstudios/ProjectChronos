@@ -11104,6 +11104,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a836c418aaf454094df7a045efe69c, type: 3}
+--- !u!223 &8288899235806553814 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 8288899235310900158, guid: f9a836c418aaf454094df7a045efe69c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8288899235806553813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8292496296064148742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11136,6 +11142,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1269508917}
+    - target: {fileID: 8292496296534851499, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 8288899235806553814}
     - target: {fileID: 8292496297076228521, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
         type: 3}
       propertyPath: m_Name

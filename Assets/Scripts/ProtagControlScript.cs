@@ -14,9 +14,10 @@ public class ProtagControlScript : MonoBehaviour
     public float slowSpeed = 1.0f;
     public Canvas gameOverMenu;
     public Canvas stageClearMenu;
+    public Canvas pauseMenu;
     public Slider timeShiftHud;
     public GameObject ragdoll;
-    public GameObject camera;
+    public new GameObject camera;
   
 
     private Animator anim;
@@ -26,6 +27,7 @@ public class ProtagControlScript : MonoBehaviour
     private int isJumping = 0;
     private CanvasGroup gameOver;
     private CanvasGroup stageClear;
+    private CanvasGroup pause;
     private SwordCollector swordCollector;
     private Vector3 dashEnd;
     private Vector3 dashDir;
@@ -52,6 +54,11 @@ public class ProtagControlScript : MonoBehaviour
         stageClear.interactable = false;
         stageClear.blocksRaycasts = false;
         stageClear.alpha = 0f;
+
+        pause = pauseMenu.GetComponent<CanvasGroup>();
+        pause.interactable = false;
+        pause.blocksRaycasts = false;
+        pause.alpha = 0f;
 
         Time.timeScale = 1f;
         TimeShift.Instance.fast = true;
@@ -122,49 +129,55 @@ public class ProtagControlScript : MonoBehaviour
         //     anim.SetBool("TurningRight", false);
         // }
 
-        if (Input.GetButtonDown("Jump"))
+        if (!gameOver.interactable && !stageClear.interactable && !pause.interactable)
         {
-            if (isJumping < 2)
+            if (Input.GetButtonDown("Jump"))
             {
-                isJumping++;
-                // Current jumping solution. Apply strong vertical force to rigidbody
-                Rigidbody rb = GetComponent<Rigidbody>();
-                rb.AddForce(new Vector3(0, 150, 0));
+                if (isJumping < 2)
+                {
+                    isJumping++;
+                    // Current jumping solution. Apply strong vertical force to rigidbody
+                    Rigidbody rb = GetComponent<Rigidbody>();
+                    rb.AddForce(new Vector3(0, 150, 0));
 
-                anim.SetBool("Jumping", true);
+                    anim.SetBool("Jumping", true);
+                }
             }
-        } else
-        {
-            anim.SetBool("Jumping", false);
-        }
-        
-        if (Input.GetButtonDown("Fire1")) {
-            if (swordCollector.hasSword)
+            else
             {
+                anim.SetBool("Jumping", false);
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (swordCollector.hasSword)
+                {
+                    swordSwing.Play();
+                    anim.Play("Attack");
+                    attacking = true;
+                    Invoke("DoneAttacking", 1f);
+                }
+            }
+
+            if (Input.GetButtonDown("Fire3"))
+            {
+                RaycastHit hit;
+                dashDir = this.transform.forward;
+                if (Physics.Raycast(this.transform.position, dashDir, out hit, raycastDist))
+                {
+                    Debug.Log("dash blocked");
+                    dashEnd = this.transform.position + ((hit.distance - 0.3f) * this.transform.forward);
+                }
+                else
+                {
+                    dashEnd = this.transform.position + (this.transform.forward * raycastDist);
+                }
+                anim.SetBool("dash", true);
                 swordSwing.Play();
                 anim.Play("Attack");
                 attacking = true;
-                Invoke("DoneAttacking", 1f);
+                dashing = true;
             }
-        }
-
-        if (Input.GetButtonDown("Fire3"))
-        {
-            RaycastHit hit;
-            dashDir = this.transform.forward;
-            if (Physics.Raycast(this.transform.position, dashDir, out hit, raycastDist))
-            {
-                Debug.Log("dash blocked");
-                dashEnd = this.transform.position + ((hit.distance - 0.3f) * this.transform.forward);
-            } else
-            {
-                dashEnd = this.transform.position + (this.transform.forward * raycastDist);
-            }
-            anim.SetBool("dash", true);
-            swordSwing.Play();
-            anim.Play("Attack");
-            attacking = true;
-            dashing = true;
         }
 
         if (dashing && (this.transform.position - dashEnd).magnitude <= 1)
