@@ -39,7 +39,10 @@ public class RobotEnemyController : MonoBehaviour
         newRifle.transform.localRotation = Quaternion.Euler(90, 0, 0);
         muzzle = newRifle.transform.Find("Muzzle").gameObject;
         this.navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
-        this.doorScript = guardDoor.GetComponent<DoorScript>();
+        if (guardDoor != null)
+        {
+            this.doorScript = guardDoor.GetComponent<DoorScript>();
+        }
         this.currWaypoint = -1;
     }
 
@@ -104,14 +107,17 @@ public class RobotEnemyController : MonoBehaviour
     
     private void OnDestroy()
     {
-        doorScript.doorEnabled = true;
+        if (doorScript != null)
+        {
+            doorScript.doorEnabled = true;
+        }
     }
 
     private void SetNextWaypoint()
     {
         if (this.waypoints == null || this.waypoints.Length == 0)
         {
-            Debug.LogError("No waypoints specified");
+            Debug.LogWarning("No waypoints specified");
         }
         else
         {
