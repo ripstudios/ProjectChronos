@@ -17393,7 +17393,7 @@ PrefabInstance:
         type: 3}
       propertyPath: guardAreaMinimumZ
       value: 
-      objectReference: {fileID: 1027060159}
+      objectReference: {fileID: 340469352}
     - target: {fileID: 813787963073142125, guid: 45450bb13badf493297c0b98d834b720,
         type: 3}
       propertyPath: guardAreaMaximumZ
@@ -17403,7 +17403,7 @@ PrefabInstance:
         type: 3}
       propertyPath: guardAreaMaximumX
       value: 
-      objectReference: {fileID: 340469352}
+      objectReference: {fileID: 1027060159}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45450bb13badf493297c0b98d834b720, type: 3}
 --- !u!4 &1883743966 stripped
