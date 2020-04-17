@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3523225043521101504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_LocalScale: {x: 1.3, y: 0.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -128,6 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
+  timeOpen: 3
+  defaultColor: {fileID: 2100000, guid: 8cdb5ee33b639814a9e560f5636b33d3, type: 2}
+  pressedColor: {fileID: 2100000, guid: d4144be9ab29d40fdbf4d40078ade65f, type: 2}
 --- !u!54 &3721670166381121731
 Rigidbody:
   m_ObjectHideFlags: 0

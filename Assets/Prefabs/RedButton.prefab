@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3523225043521101517}
   - component: {fileID: 3523225043521101506}
   - component: {fileID: 3523225043521101519}
+  - component: {fileID: 9086466613575907395}
   m_Layer: 0
   m_Name: RedButton
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3523225043521101504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.3, z: 1}
+  m_LocalScale: {x: 1.3, y: 0.3, z: 1.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -113,3 +114,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9086466613575907395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3523225043521101504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a324c1b8326b664cbd80e67622fa3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}
+  timeOpen: 3
+  defaultColor: {fileID: 2100000, guid: 72a0b9d3027f3a04bacc650b6dbaf291, type: 2}
+  pressedColor: {fileID: 2100000, guid: 95b8cc69f02054fabb15a3893227a31e, type: 2}

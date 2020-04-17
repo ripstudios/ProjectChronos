@@ -1561,6 +1561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 947280121}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1621,7 +1626,8 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 947280121}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
 --- !u!1001 &137559857
 PrefabInstance:
@@ -3127,6 +3133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HumanEnemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 813787963073142124, guid: 45450bb13badf493297c0b98d834b720,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813787963073142125, guid: 45450bb13badf493297c0b98d834b720,
         type: 3}
@@ -7462,6 +7473,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 813787963073142124, guid: 45450bb13badf493297c0b98d834b720,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 813787963073142125, guid: 45450bb13badf493297c0b98d834b720,
         type: 3}
       propertyPath: guardAreaMinimumX
@@ -8381,6 +8397,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 2066732744}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8441,7 +8462,8 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 2066732744}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
 --- !u!1001 &907550900
 PrefabInstance:
@@ -8455,6 +8477,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 618459505}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8515,7 +8542,8 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 618459505}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
 --- !u!1001 &942733014
 PrefabInstance:
@@ -9652,6 +9680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HumanEnemy (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 813787963073142124, guid: 45450bb13badf493297c0b98d834b720,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813787963073142125, guid: 45450bb13badf493297c0b98d834b720,
         type: 3}
@@ -17384,6 +17417,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanEnemy (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 813787963073142124, guid: 45450bb13badf493297c0b98d834b720,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 813787963073142125, guid: 45450bb13badf493297c0b98d834b720,
         type: 3}
       propertyPath: guardAreaMinimumX
@@ -20151,6 +20189,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 736389636}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20211,5 +20254,6 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 736389636}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
