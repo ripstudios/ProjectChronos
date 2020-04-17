@@ -14,8 +14,10 @@ public class DoorOpener : MonoBehaviour
     private Renderer rend;
     private bool unpressed = true;
     private float pressedCountdown = 0;
-    private float fastIncrement = 10;
-    private float slowIncrement = 1;
+
+    private readonly int buttonTimer = 200;
+    private readonly int fastIncrement = 10;
+    private readonly int slowIncrement = 1;
 
     void Start()
     {
@@ -68,7 +70,7 @@ public class DoorOpener : MonoBehaviour
             anim.SetBool("pressed", false);
             if (!unpressed)
             {
-                pressedCountdown = 200;
+                pressedCountdown = buttonTimer;
             }
         }
     }
