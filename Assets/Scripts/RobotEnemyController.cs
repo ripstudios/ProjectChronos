@@ -107,6 +107,7 @@ public class RobotEnemyController : MonoBehaviour
     
     private void OnDestroy()
     {
+        FindObjectOfType<AudioManager>().Play("Robot Death");
         if (doorScript != null)
         {
             doorScript.doorEnabled = true;

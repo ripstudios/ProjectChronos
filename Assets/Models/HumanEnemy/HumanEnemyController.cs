@@ -324,4 +324,8 @@ public class HumanEnemyController : MonoBehaviour
     {
         weaponObject.GetComponent<CapsuleCollider>().enabled = false;
     }
+
+    private void OnDestroy() {
+        FindObjectOfType<AudioManager>().Play("Human Death");
+    }
 }
