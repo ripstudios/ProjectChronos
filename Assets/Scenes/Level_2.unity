@@ -1217,6 +1217,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 669197770}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1277,7 +1282,8 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 669197770}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
 --- !u!1001 &219175246
 PrefabInstance:
@@ -11983,6 +11989,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RedButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2718329239039728750, guid: ec17384865886a9458837497a28cfbb5,
+        type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 504699340}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12043,7 +12054,8 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 504699340}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7729845704896805604, guid: ec17384865886a9458837497a28cfbb5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec17384865886a9458837497a28cfbb5, type: 3}
 --- !u!4 &1705778017 stripped
 Transform:
