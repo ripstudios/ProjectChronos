@@ -69,14 +69,14 @@ public class CameraFollow : MonoBehaviour
                 Target.rotation = Quaternion.Euler(mouseY, mouseX, 0);
 
                 // TODO: Also allow rotation with keys
-                Player.rotation = Quaternion.Euler(0, mouseX, 0);
+                // Player.rotation = Quaternion.Euler(0, mouseX, 0);
             }
         }
         
 
-        if (this.characterToFollow != null)
+        if (Target != null)
         {
-            Transform camPose = this.characterToFollow.transform.Find("CamPos");
+            Transform camPose = Target.transform.Find("CamPos2");
             if (camPose == null)
             {
                 Debug.LogError("The character is not assigned CamPos.");
@@ -99,7 +99,7 @@ public class CameraFollow : MonoBehaviour
             }
         }
 
-        transform.LookAt(Target);
+        // transform.LookAt(Target);
     }
     
 }
