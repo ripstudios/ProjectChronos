@@ -85,11 +85,11 @@ public class ProtagControlScript : MonoBehaviour
         float strafeSpeed = h * toggleSpeed;
 
         anim.SetFloat("VSpeed", forwardSpeed);
-        // anim.SetFloat("HSpeed", 0);
+        anim.SetFloat("HSpeed", 0);
 
-        // if (h != 0 && v == 0) {
-        //     anim.SetFloat("HSpeed", strafeSpeed);
-        // }
+        if (h != 0 && v == 0) {
+            anim.SetFloat("HSpeed", strafeSpeed);
+        }
 
         // Work around for jump animation without root motion
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("jump"))
@@ -114,26 +114,26 @@ public class ProtagControlScript : MonoBehaviour
 
 
         // Looks uber weird
-        if (v == 0 && h != 0) { 
-            if (h < 0)
-            {
-                anim.SetBool("TurningLeft", true);
-                if (Input.GetKey(KeyCode.A))
-                  transform.Rotate(-Vector3.up * 120.0f * Time.deltaTime);
+        // if (v == 0 && h != 0) { 
+        //     if (h < 0)
+        //     {
+        //         anim.SetBool("TurningLeft", true);
+        //         if (Input.GetKey(KeyCode.A))
+        //           transform.Rotate(-Vector3.up * 120.0f * Time.deltaTime);
       
                 
-            }
-            else if (h > 0)
-            {
-                anim.SetBool("TurningRight", true);
-                if (Input.GetKey(KeyCode.D))
-                    this.transform.Rotate(Vector3.up * 120.0f * Time.deltaTime);
-            }
-        } else
-        {
-            anim.SetBool("TurningLeft", false);
-            anim.SetBool("TurningRight", false);
-        }
+        //     }
+        //     else if (h > 0)
+        //     {
+        //         anim.SetBool("TurningRight", true);
+        //         if (Input.GetKey(KeyCode.D))
+        //             this.transform.Rotate(Vector3.up * 120.0f * Time.deltaTime);
+        //     }
+        // } else
+        // {
+        //     anim.SetBool("TurningLeft", false);
+        //     anim.SetBool("TurningRight", false);
+        // }
 
         if (!gameOver.interactable && !stageClear.interactable && !pause.interactable)
         {
