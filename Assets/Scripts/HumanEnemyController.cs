@@ -75,7 +75,7 @@ public class HumanEnemyController : MonoBehaviour
                 {
                     this.aiState = AIState.Attack;
                     this.navMeshAgent.isStopped = false;
-                    this.navMeshAgent.stoppingDistance = this.weapon == 3 ? 1 : 7;
+                    this.navMeshAgent.stoppingDistance = this.weapon == 3 ? 1 : 8;
                     this.navMeshAgent.speed = this.weapon == 3 ? 12 : 4;
                     this.navMeshAgent.acceleration = this.weapon == 3 ? 12 : 5;
                     Debug.Log("AIState changed to Attack");

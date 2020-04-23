@@ -71,7 +71,7 @@ public class RobotEnemyController : MonoBehaviour
                 if (isPlayerInRoom)
                 {
                     this.aiState = AIState.Attack;
-                    this.navMeshAgent.stoppingDistance = 7;
+                    this.navMeshAgent.stoppingDistance = 8;
                     Debug.Log("AIState changed to Attack");
                 }
                 else if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance < Mathf.Epsilon && !navMeshAgent.pathPending)
