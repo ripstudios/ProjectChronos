@@ -187,15 +187,17 @@ public class ProtagControlScript : MonoBehaviour
                     // Debug.Log("WALL");
                     DoneDashing();
                 }
-            }
-            if ((this.transform.position - origin).magnitude >= dashDist)
+            } else
             {
-                DoneDashing();
-            }
-            if (isJumping > 0)
-            {
-                this.transform.position = this.transform.position + this.transform.forward * 1.5f;
-            }            
+                if ((this.transform.position - origin).magnitude >= dashDist)
+                {
+                    DoneDashing();
+                }
+                if (isJumping > 0)
+                {
+                    this.transform.position = this.transform.position + this.transform.forward * 1.5f;
+                }
+            }     
         }
         // Player character no longer timeshifts
         //// TimeShift functionality
