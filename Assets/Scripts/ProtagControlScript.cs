@@ -12,15 +12,17 @@ public class ProtagControlScript : MonoBehaviour
     public bool dead;
     public float fastSpeed = 1.0f;
     public float slowSpeed = 1.0f;
+    public float dashDist = 5f;
     public Canvas gameOverMenu;
     public Canvas stageClearMenu;
     public Canvas pauseMenu;
     public Slider timeShiftHud;
     public GameObject ragdoll;
     public new GameObject camera;
-  
+    public bool godMode = false;
 
     private Animator anim;
+    private Rigidbody rb;
     private AudioSource swordSwing;
     private int toggleSpeed;
     private bool InputMapToCircular = true;
@@ -30,8 +32,7 @@ public class ProtagControlScript : MonoBehaviour
     private CanvasGroup pause;
     private SwordCollector swordCollector;
     private Vector3 dashEnd;
-    private Vector3 dashDir;
-    public float raycastDist = 5f;
+    private Vector3 origin;
 
     private float mouseX, mouseY;
 
@@ -40,6 +41,7 @@ public class ProtagControlScript : MonoBehaviour
     {
         Instance = this;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
         toggleSpeed = 9;
         attacking = false;
         dead = false;
@@ -167,17 +169,7 @@ public class ProtagControlScript : MonoBehaviour
 
             if (Input.GetButtonDown("Fire3"))
             {
-                RaycastHit hit;
-                dashDir = this.transform.forward;
-                if (Physics.Raycast(this.transform.position, dashDir, out hit, raycastDist))
-                {
-                    Debug.Log("dash blocked");
-                    dashEnd = this.transform.position + ((hit.distance - 0.3f) * this.transform.forward);
-                }
-                else
-                {
-                    dashEnd = this.transform.position + (this.transform.forward * raycastDist);
-                }
+                origin = this.transform.position;
                 anim.SetBool("dash", true);
                 swordSwing.Play();
                 anim.Play("Attack");
@@ -186,11 +178,24 @@ public class ProtagControlScript : MonoBehaviour
             }
         }
 
-        if (dashing && (this.transform.position - dashEnd).magnitude <= 1)
+        if (dashing)
         {
-            anim.SetBool("dash", false);
-            attacking = false;
-            dashing = false;
+            if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, dashDist))
+            {
+                if (hit.distance < 0.7)
+                {
+                    // Debug.Log("WALL");
+                    DoneDashing();
+                }
+            }
+            if ((this.transform.position - origin).magnitude >= dashDist)
+            {
+                DoneDashing();
+            }
+            if (isJumping > 0)
+            {
+                this.transform.position = this.transform.position + this.transform.forward * 1.5f;
+            }            
         }
         // Player character no longer timeshifts
         //// TimeShift functionality
@@ -213,6 +218,8 @@ public class ProtagControlScript : MonoBehaviour
     void DoneDashing()
     {
         anim.SetBool("dash", false);
+        attacking = false;
+        dashing = false;
     }
 
     void OnAnimatorMove()
@@ -232,6 +239,7 @@ public class ProtagControlScript : MonoBehaviour
             this.gameObject.transform.parent = other.transform;
         }
         isJumping = 0;
+        DoneDashing();
     }
 
     private void OnTriggerExit(Collider other)
@@ -289,31 +297,35 @@ public class ProtagControlScript : MonoBehaviour
 
     public void GameOver()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        camera.GetComponent<CameraFollow>().enabled = false;
-
-        Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
-        Transform[] currentJoints = GetComponentsInChildren<Transform>();
-
-        for (int i = 0; i < ragdollJoints.Length; i++)
+        if (!godMode)
         {
-            for (int q = 0; q < currentJoints.Length; q++)
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            camera.GetComponent<CameraFollow>().enabled = false;
+
+            Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
+            Transform[] currentJoints = GetComponentsInChildren<Transform>();
+
+            for (int i = 0; i < ragdollJoints.Length; i++)
             {
-                if (currentJoints[q].name.CompareTo(ragdollJoints[i].name) == 0)
+                for (int q = 0; q < currentJoints.Length; q++)
                 {
-                    ragdollJoints[i].position = currentJoints[q].position;
-                    ragdollJoints[i].rotation = currentJoints[q].rotation;
-                    break;
+                    if (currentJoints[q].name.CompareTo(ragdollJoints[i].name) == 0)
+                    {
+                        ragdollJoints[i].position = currentJoints[q].position;
+                        ragdollJoints[i].rotation = currentJoints[q].rotation;
+                        break;
+                    }
                 }
             }
+            dead = true;
+            gameOver.interactable = true;
+            gameOver.blocksRaycasts = true;
+            gameOver.alpha = 1f;
+            this.gameObject.SetActive(false);
+            Invoke("EndTime", 0.5f);
         }
-        dead = true;
-        gameOver.interactable = true;
-        gameOver.blocksRaycasts = true;
-        gameOver.alpha = 1f;
-        this.gameObject.SetActive(false);
-        Invoke("EndTime", 0.5f);
+        
     }
 
     public void StageClear()
