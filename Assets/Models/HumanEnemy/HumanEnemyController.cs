@@ -326,6 +326,10 @@ public class HumanEnemyController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        FindObjectOfType<AudioManager>().Play("Human Death");
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager != null)
+        {
+            audioManager.Play("Human Death");
+        }
     }
 }

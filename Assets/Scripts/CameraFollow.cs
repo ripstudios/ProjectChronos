@@ -11,7 +11,6 @@ public class CameraFollow : MonoBehaviour
     float mouseX, mouseY;
     float v, h;
     public Transform Obstruction;
-    float zoomSpeed = 2f;
     private Vector3 offset;   
 
     float distance;
