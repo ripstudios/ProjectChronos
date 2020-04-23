@@ -29,6 +29,8 @@ public class RobotEnemyController : MonoBehaviour
     private int currWaypoint;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private DoorScript doorScript;
+    private float speed;
+    private float speedMultiplier;
 
     void Awake()
     {
@@ -44,6 +46,8 @@ public class RobotEnemyController : MonoBehaviour
             this.doorScript = guardDoor.GetComponent<DoorScript>();
         }
         this.currWaypoint = -1;
+        this.speed = this.navMeshAgent.speed;
+        this.speedMultiplier = 1.0f;
     }
 
     // Start is called before the first frame update
@@ -57,11 +61,13 @@ public class RobotEnemyController : MonoBehaviour
     {
         if (TimeShift.Instance.fast)
         {
-            anim.speed = fastSpeed;
+            anim.speed = fastSpeed * this.speedMultiplier;
+            this.navMeshAgent.speed = this.speed * fastSpeed * this.speedMultiplier;
         }
         else
         {
-            anim.speed = slowSpeed;
+            anim.speed = slowSpeed * this.speedMultiplier;
+            this.navMeshAgent.speed = this.speed * slowSpeed * this.speedMultiplier;
         }
 
         bool isPlayerInRoom = ProtagControlScript.Instance.transform.position.x > this.guardAreaMinimumX.transform.position.x && ProtagControlScript.Instance.transform.position.x < this.guardAreaMaximumX.transform.position.x && ProtagControlScript.Instance.transform.position.z > this.guardAreaMinimumZ.transform.position.z && ProtagControlScript.Instance.transform.position.z < this.guardAreaMaximumZ.transform.position.z;
@@ -72,6 +78,7 @@ public class RobotEnemyController : MonoBehaviour
                 {
                     this.aiState = AIState.Attack;
                     this.navMeshAgent.stoppingDistance = 8;
+                    this.speedMultiplier = 3.0f;
                     Debug.Log("AIState changed to Attack");
                 }
                 else if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance < Mathf.Epsilon && !navMeshAgent.pathPending)
@@ -86,8 +93,9 @@ public class RobotEnemyController : MonoBehaviour
                     this.navMeshAgent.isStopped = true;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
+                    this.speedMultiplier = 1.0f;
                     this.SetNextWaypoint();
-                    Debug.Log("AIState changed to Idle");
+                    Debug.Log("AIState changed to Patrol");
                 }
                 else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
                 {
@@ -102,7 +110,7 @@ public class RobotEnemyController : MonoBehaviour
             default:
                 break;
         }
-        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
+        float velocity = navMeshAgent.velocity.magnitude / 3.0f / (TimeShift.Instance.fast ? fastSpeed : slowSpeed);
         anim.SetFloat("vely", velocity);
     }
     

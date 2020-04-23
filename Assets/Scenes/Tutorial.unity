@@ -8673,7 +8673,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2525561
-  m_Speed: 3
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -9751,22 +9751,7 @@ PrefabInstance:
       objectReference: {fileID: 136330, guid: c2ea84e17c1f17740ab8637fd53e44d0, type: 3}
     - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
         type: 3}
-      propertyPath: slowSpeed
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
-        type: 3}
-      propertyPath: fastSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
-        type: 3}
       propertyPath: rotationSmoothingSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,
-        type: 3}
-      propertyPath: rotationSmoothSpeed
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 639071937801804318, guid: fb665f2b3e17e4256bc4a020945ec0b9,

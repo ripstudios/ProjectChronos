@@ -27,6 +27,8 @@ public class HumanEnemyController : MonoBehaviour
     private int currWaypoint;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private GameObject weaponObject;
+    private float speed;
+    private float speedMultiplier;
 
     private string objectName;
 
@@ -47,6 +49,8 @@ public class HumanEnemyController : MonoBehaviour
         ChooseWeapon(weapon);
 
         this.currWaypoint = -1;
+        this.speed = this.navMeshAgent.speed;
+        this.speedMultiplier = 1.0f;
     }
 
     // Start is called before the first frame update
@@ -60,11 +64,13 @@ public class HumanEnemyController : MonoBehaviour
     {
         if (TimeShift.Instance.fast)
         {
-            anim.speed = fastSpeed;
+            anim.speed = fastSpeed * this.speedMultiplier;
+            this.navMeshAgent.speed = this.speed * fastSpeed * this.speedMultiplier;
         }
         else
         {
-            anim.speed = slowSpeed;
+            anim.speed = slowSpeed * this.speedMultiplier;
+            this.navMeshAgent.speed = this.speed * slowSpeed * this.speedMultiplier;
         }
 
         bool isPlayerInRoom = ProtagControlScript.Instance.transform.position.x > this.guardAreaMinimumX.transform.position.x && ProtagControlScript.Instance.transform.position.x < this.guardAreaMaximumX.transform.position.x && ProtagControlScript.Instance.transform.position.z > this.guardAreaMinimumZ.transform.position.z && ProtagControlScript.Instance.transform.position.z < this.guardAreaMaximumZ.transform.position.z;
@@ -78,6 +84,7 @@ public class HumanEnemyController : MonoBehaviour
                     this.navMeshAgent.stoppingDistance = this.weapon == 3 ? 1 : 8;
                     this.navMeshAgent.speed = this.weapon == 3 ? 12 : 4;
                     this.navMeshAgent.acceleration = this.weapon == 3 ? 12 : 5;
+                    this.speedMultiplier = 1.75f;
                     Debug.Log("AIState changed to Attack");
                 }
                 else if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance < Mathf.Epsilon && !navMeshAgent.pathPending)
@@ -92,8 +99,9 @@ public class HumanEnemyController : MonoBehaviour
                     this.navMeshAgent.isStopped = true;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
+                    this.speedMultiplier = 1.0f;
                     this.SetNextWaypoint();
-                    Debug.Log("AIState changed to Idle");
+                    Debug.Log("AIState changed to Patrol");
                 }
                 else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
                 {
@@ -108,7 +116,7 @@ public class HumanEnemyController : MonoBehaviour
             default:
                 break;
         }
-        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
+        float velocity = navMeshAgent.velocity.magnitude / 3.0f / (TimeShift.Instance.fast ? fastSpeed : slowSpeed);
         anim.SetFloat("vely", velocity);
     }
 
