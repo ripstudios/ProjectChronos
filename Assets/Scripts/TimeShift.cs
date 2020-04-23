@@ -10,6 +10,7 @@ public class TimeShift : MonoBehaviour
     public bool fast = true;
     public Slider hud;
     public float maxMana = 10f;
+    public int stage = 0;
 
     private float mana;
 

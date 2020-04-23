@@ -20,6 +20,7 @@ public class ProtagControlScript : MonoBehaviour
     public GameObject ragdoll;
     public new GameObject camera;
     public bool godMode = false;
+    public GameObject[] checkpoint;
 
     private Animator anim;
     private Rigidbody rb;
@@ -40,6 +41,8 @@ public class ProtagControlScript : MonoBehaviour
     void Start()
     {
         Instance = this;
+        this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
+        this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         toggleSpeed = 9;
