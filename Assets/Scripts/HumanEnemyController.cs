@@ -13,6 +13,7 @@ public class HumanEnemyController : MonoBehaviour
 
     public int weapon = 3;
     public GameObject pewpew;
+    public GameObject[] waypoints;
     public float fastSpeed;
     public float slowSpeed;
     public float rotationSmoothSpeed;
@@ -44,6 +45,8 @@ public class HumanEnemyController : MonoBehaviour
         SelectFace(face);
 
         ChooseWeapon(weapon);
+
+        this.currWaypoint = -1;
     }
 
     // Start is called before the first frame update
@@ -77,6 +80,10 @@ public class HumanEnemyController : MonoBehaviour
                     this.navMeshAgent.acceleration = this.weapon == 3 ? 12 : 5;
                     Debug.Log("AIState changed to Attack");
                 }
+                else if (navMeshAgent.remainingDistance - navMeshAgent.stoppingDistance < Mathf.Epsilon && !navMeshAgent.pathPending)
+                {
+                    SetNextWaypoint();
+                }
                 break;
             case AIState.Attack:
                 if (!isPlayerInRoom)
@@ -85,6 +92,7 @@ public class HumanEnemyController : MonoBehaviour
                     this.navMeshAgent.isStopped = true;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
+                    this.SetNextWaypoint();
                     Debug.Log("AIState changed to Idle");
                 }
                 else if (Vector3.Distance(ProtagControlScript.Instance.transform.position, this.transform.position) >= this.navMeshAgent.stoppingDistance)
@@ -99,6 +107,33 @@ public class HumanEnemyController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+        float velocity = navMeshAgent.velocity.magnitude / navMeshAgent.speed;
+        anim.SetFloat("vely", velocity);
+    }
+
+    private void OnDestroy()
+    {
+        AudioManager audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager != null)
+        {
+            audioManager.Play("Human Death");
+        }
+    }
+
+    private void SetNextWaypoint()
+    {
+        if (this.waypoints != null && this.waypoints.Length != 0)
+        {
+            if (this.currWaypoint == this.waypoints.Length - 1)
+            {
+                this.currWaypoint = 0;
+            }
+            else
+            {
+                this.currWaypoint += 1;
+            }
+            this.navMeshAgent.SetDestination(this.waypoints[this.currWaypoint].transform.position);
         }
     }
 
@@ -323,13 +358,5 @@ public class HumanEnemyController : MonoBehaviour
     public void DectivateSword()
     {
         weaponObject.GetComponent<CapsuleCollider>().enabled = false;
-    }
-
-    private void OnDestroy() {
-        AudioManager audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager != null)
-        {
-            audioManager.Play("Human Death");
-        }
     }
 }

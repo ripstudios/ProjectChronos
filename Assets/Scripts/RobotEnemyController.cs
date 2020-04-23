@@ -83,6 +83,7 @@ public class RobotEnemyController : MonoBehaviour
                 if (!isPlayerInRoom)
                 {
                     this.aiState = AIState.Patrol;
+                    this.navMeshAgent.isStopped = true;
                     this.navMeshAgent.stoppingDistance = 0;
                     this.anim.SetBool("firing", false);
                     this.SetNextWaypoint();
@@ -120,11 +121,7 @@ public class RobotEnemyController : MonoBehaviour
 
     private void SetNextWaypoint()
     {
-        if (this.waypoints == null || this.waypoints.Length == 0)
-        {
-            Debug.LogWarning("No waypoints specified");
-        }
-        else
+        if (this.waypoints != null && this.waypoints.Length != 0)
         {
             if (this.currWaypoint == this.waypoints.Length - 1)
             {
