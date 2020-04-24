@@ -144,7 +144,7 @@ public class ProtagControlScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                if (isJumping < 2)
+                if (isJumping < 2 || godMode)
                 {
                     isJumping++;
                     // Current jumping solution. Apply strong vertical force to rigidbody
@@ -185,7 +185,7 @@ public class ProtagControlScript : MonoBehaviour
         {
             if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, dashDist))
             {
-                if (hit.distance < 0.7)
+                if (hit.distance < 0.7 && !godMode)
                 {
                     // Debug.Log("WALL");
                     DoneDashing();

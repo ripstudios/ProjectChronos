@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4048379814024858507}
   - component: {fileID: 4048379814024858508}
   - component: {fileID: 4048379814024858510}
-  m_Layer: 0
+  - component: {fileID: 4066171370548021476}
+  m_Layer: 11
   m_Name: blue door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,12 +90,25 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4048379814024858512}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 4e1b01f9c50ee5343afe22990d2feba9, type: 3}
+--- !u!114 &4066171370548021476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4048379814024858512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e8c36396b9f8c44a546664797a15f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageNumber: 0
 --- !u!1 &4048379814109524689
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +122,7 @@ GameObject:
   - component: {fileID: 4048379814109524685}
   - component: {fileID: 4048379814109524686}
   - component: {fileID: 4048379814109524687}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +232,7 @@ GameObject:
   - component: {fileID: 4048379814178022400}
   - component: {fileID: 4653196326912561809}
   - component: {fileID: 2732611493498596338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +307,7 @@ GameObject:
   - component: {fileID: 4048379814269781054}
   - component: {fileID: 4048379814269781055}
   - component: {fileID: 4048379814269781440}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,7 +416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2455512387530147883}
   - component: {fileID: 737395406743500823}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}

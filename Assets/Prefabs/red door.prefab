@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1483673799871577611}
   - component: {fileID: 7247919668309396774}
   - component: {fileID: 3996185693488996270}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004880007495691787}
   - component: {fileID: 2876558658324787055}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 8563684203111314441}
   - component: {fileID: 8563684203120883169}
   - component: {fileID: 8563684203115687819}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 8563684203111513969}
   - component: {fileID: 8563684203120879249}
   - component: {fileID: 8563684203115654683}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 8563684203111469235}
   - component: {fileID: 8563684203115583609}
   - component: {fileID: 7154932637164999796}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: red door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,3 +532,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e8c36396b9f8c44a546664797a15f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNumber: 0

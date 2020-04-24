@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3102891014440520593}
   - component: {fileID: 3102891014440520595}
   - component: {fileID: 3102891014440520594}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68fe12afab8500b43b37a230ebbd5478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorEnabled: 1
   fastSpeed: 1
   slowSpeed: 0.1
   open: {fileID: 125916484698370182}
@@ -94,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8623025956030124617}
   - component: {fileID: 125916484698370182}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: OpenDoorAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +224,7 @@ GameObject:
   - component: {fileID: 7365178120903593803}
   - component: {fileID: 7365178120902611875}
   - component: {fileID: 7365178120898462409}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +316,7 @@ GameObject:
   - component: {fileID: 7365178120903662179}
   - component: {fileID: 7365178120902940891}
   - component: {fileID: 7365178120898429785}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: door_2_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +408,8 @@ GameObject:
   - component: {fileID: 7365178120903698691}
   - component: {fileID: 7365178120902655073}
   - component: {fileID: 7365178120898409643}
-  m_Layer: 0
+  - component: {fileID: 8727245939653541994}
+  m_Layer: 11
   m_Name: Door & Door Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,9 +486,22 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7365178120900685473}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 4e1b01f9c50ee5343afe22990d2feba9, type: 3}
+--- !u!114 &8727245939653541994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7365178120900685473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e8c36396b9f8c44a546664797a15f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageNumber: 0
