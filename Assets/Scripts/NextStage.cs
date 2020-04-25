@@ -8,6 +8,7 @@ public class NextStage : MonoBehaviour
     // Start is called before the first frame update
     public void Next()
     {
+        TimeShift.Instance.stage = 0;
         switch(SceneManager.GetActiveScene().name)
         {
             case "Tutorial":
@@ -15,6 +16,9 @@ public class NextStage : MonoBehaviour
                 break;
             case "Level_1":
                 SceneManager.LoadScene("Level_2");
+                break;
+            case "Level_2":
+                SceneManager.LoadScene("Main Menu Fix");
                 break;
             default:
                 break;

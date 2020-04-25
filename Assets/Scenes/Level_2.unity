@@ -6162,6 +6162,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1364527765572420213, guid: 90d6c506e3132ce4f9776c9aeb3edcd4,
+        type: 3}
+      propertyPath: m_Text
+      value: Escaped!
+      objectReference: {fileID: 0}
     - target: {fileID: 1364527765628435285, guid: 90d6c506e3132ce4f9776c9aeb3edcd4,
         type: 3}
       propertyPath: m_Name
@@ -6276,6 +6281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1364527765678290149, guid: 90d6c506e3132ce4f9776c9aeb3edcd4,
+        type: 3}
+      propertyPath: m_Text
+      value: Return to Main Menu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d6c506e3132ce4f9776c9aeb3edcd4, type: 3}

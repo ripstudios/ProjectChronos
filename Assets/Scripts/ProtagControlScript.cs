@@ -41,14 +41,26 @@ public class ProtagControlScript : MonoBehaviour
     void Start()
     {
         Instance = this;
-        this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
-        this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         toggleSpeed = 9;
         attacking = false;
         dead = false;
         swordSwing = this.transform.Find("SwordSwing").GetComponent<AudioSource>();
+        swordCollector = GetComponent<SwordCollector>();
+
+        this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
+        this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
+        Transform handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand/SwordHoldSpot");
+        if (!swordCollector.hasSword)
+        {
+            Rigidbody sword = Instantiate<Rigidbody>(swordCollector.swordPrefab, handHold);
+            sword.transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0)); // set this to modify sword rotation so holding is more realistic
+            sword.transform.localPosition = new Vector3(0, 0, 0);
+            sword.isKinematic = true;
+            GetComponent<SwordCollector>().hasSword = true;
+        }
+
 
         gameOver = gameOverMenu.GetComponent<CanvasGroup>();
         gameOver.interactable = false;
@@ -68,7 +80,6 @@ public class ProtagControlScript : MonoBehaviour
         Time.timeScale = 1f;
         TimeShift.Instance.fast = true;
         TimeShift.Instance.hud = timeShiftHud;
-        swordCollector = GetComponent<SwordCollector>();
         
     }
 
