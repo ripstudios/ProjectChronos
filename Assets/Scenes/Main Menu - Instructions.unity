@@ -3815,13 +3815,15 @@ MonoBehaviour:
   dead: 0
   fastSpeed: 0
   slowSpeed: 0
+  dashDist: 5
   gameOverMenu: {fileID: 1036666142}
   stageClearMenu: {fileID: 2040418047}
   pauseMenu: {fileID: 1660368235}
   timeShiftHud: {fileID: 1698996665}
   ragdoll: {fileID: 1259785902}
   camera: {fileID: 0}
-  raycastDist: 5
+  godMode: 0
+  checkpoint: []
 --- !u!4 &607146594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 433578, guid: 4e32615977c0a9f4688fa0d66b0a93e5,
@@ -4954,7 +4956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.02, y: 0.05}
   m_AnchorMax: {x: 0.27, y: 0.15}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 212, y: 98}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1001 &800842099
@@ -5040,7 +5042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &818059772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5493,7 +5495,7 @@ GameObject:
   - component: {fileID: 886322794}
   - component: {fileID: 886322793}
   m_Layer: 5
-  m_Name: Back
+  m_Name: Button - Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5528,7 +5530,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 886322791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a044958a75bcb440b5a5eb17e6b75f0, type: 3}
+  m_Script: {fileID: 11500000, guid: ce3a0054760de0343ac6cc0490c28639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &886322794
@@ -5575,7 +5577,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 886322793}
-        m_MethodName: StartGame
+        m_MethodName: LoadIntroText
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8978,7 +8980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1150755697
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11331,8 +11333,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: -56}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchoredPosition: {x: 4, y: -56}
+  m_SizeDelta: {x: 450, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1606018491
 MonoBehaviour:
@@ -11377,9 +11379,9 @@ MonoBehaviour:
 
     Space: Jump
 
-    Rotate mouse right: Pivot right
+    Move mouse right: Pivot right
 
-    Rotate mouse left: Pivot left
+    Move mouse left: Pivot left
 
 
     SKILLS
@@ -11397,7 +11399,10 @@ MonoBehaviour:
 
     1      2      3      4      5      6      7      8      9
 
-    Slowest                                           Fastest'
+    Slowest                                           Fastest
+
+
+    Watch the bar in the bottom left corner to see your Timeshift supply!'
 --- !u!222 &1606018492
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12198,12 +12203,12 @@ PrefabInstance:
     - target: {fileID: 3150915472257892082, guid: e58f891568fcb734ebc7f26c793e8a45,
         type: 3}
       propertyPath: m_Name
-      value: Exit
+      value: Button - Exit
       objectReference: {fileID: 0}
     - target: {fileID: 3150915472257892083, guid: e58f891568fcb734ebc7f26c793e8a45,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -34.399994
+      value: -34.39999
       objectReference: {fileID: 0}
     - target: {fileID: 3150915472458963634, guid: e58f891568fcb734ebc7f26c793e8a45,
         type: 3}
@@ -12233,7 +12238,7 @@ PrefabInstance:
     - target: {fileID: 3150915472458963647, guid: e58f891568fcb734ebc7f26c793e8a45,
         type: 3}
       propertyPath: m_Name
-      value: Start
+      value: Button - Start
       objectReference: {fileID: 0}
     - target: {fileID: 3150915473746744684, guid: e58f891568fcb734ebc7f26c793e8a45,
         type: 3}
