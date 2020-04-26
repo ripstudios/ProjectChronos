@@ -660,6 +660,11 @@ PrefabInstance:
       propertyPath: hud
       value: 
       objectReference: {fileID: 1698996665}
+    - target: {fileID: 917467794130876400, guid: a2b649ef012124e4099bdf1d4de3a02f,
+        type: 3}
+      propertyPath: stage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 917467794130876401, guid: a2b649ef012124e4099bdf1d4de3a02f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2665,6 +2670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1372025372}
     m_Modifications:
+    - target: {fileID: 3102891014440520595, guid: ded2d9181985a49409227e780aa8ac45,
+        type: 3}
+      propertyPath: closed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7365178120900685473, guid: ded2d9181985a49409227e780aa8ac45,
         type: 3}
       propertyPath: m_Name

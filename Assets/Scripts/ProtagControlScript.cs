@@ -49,6 +49,7 @@ public class ProtagControlScript : MonoBehaviour
         swordSwing = this.transform.Find("SwordSwing").GetComponent<AudioSource>();
         swordCollector = GetComponent<SwordCollector>();
 
+        Debug.Log(TimeShift.Instance.stage);
         this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
         this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
         Transform handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand/SwordHoldSpot");

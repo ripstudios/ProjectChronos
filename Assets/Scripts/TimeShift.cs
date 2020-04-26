@@ -11,6 +11,7 @@ public class TimeShift : MonoBehaviour
     public Slider hud;
     public float maxMana = 10f;
     public int stage = 0;
+    public bool respawned = false;
 
     private float mana;
 
@@ -50,5 +51,10 @@ public class TimeShift : MonoBehaviour
             fast = true;
         }
         hud.value = mana;
+        
+        if (stage >= 2)
+        {
+            respawned = true;
+        }
     }
 }
