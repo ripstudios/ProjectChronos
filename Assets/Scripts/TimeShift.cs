@@ -10,10 +10,9 @@ public class TimeShift : MonoBehaviour
     public bool fast = true;
     public Slider hud;
     public float maxMana = 10f;
+    public float mana;
     public int stage = 0;
     public bool respawned = false;
-
-    private float mana;
 
     private void Awake()
     {
@@ -56,5 +55,10 @@ public class TimeShift : MonoBehaviour
         {
             respawned = true;
         }
+    }
+
+    public void Regen()
+    {
+        mana = maxMana;
     }
 }

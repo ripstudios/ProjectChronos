@@ -9,6 +9,7 @@ public class NextStage : MonoBehaviour
     public void Next()
     {
         TimeShift.Instance.stage = 0;
+        TimeShift.Instance.Regen();
         switch(SceneManager.GetActiveScene().name)
         {
             case "Tutorial":

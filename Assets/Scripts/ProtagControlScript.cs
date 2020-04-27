@@ -178,12 +178,13 @@ public class ProtagControlScript : MonoBehaviour
                     swordSwing.Play();
                     anim.Play("Attack");
                     attacking = true;
-                    Invoke("DoneAttacking", 1f);
+                    Invoke("DoneAttacking", 1.0f);
                 }
             }
 
-            if (Input.GetButtonDown("Fire3"))
+            if (Input.GetButtonDown("Fire3") && TimeShift.Instance.mana > 0.25 * TimeShift.Instance.maxMana)
             {
+                TimeShift.Instance.mana -= 0.25f * TimeShift.Instance.maxMana;
                 origin = this.transform.position;
                 anim.SetBool("dash", true);
                 swordSwing.Play();
@@ -197,9 +198,9 @@ public class ProtagControlScript : MonoBehaviour
         {
             if (Physics.Raycast(this.transform.position, this.transform.forward, out RaycastHit hit, dashDist))
             {
-                if (hit.distance < 0.7 && !godMode)
+                if (hit.distance < 0.7 && !hit.collider.isTrigger && !godMode)
                 {
-                    // Debug.Log("WALL");
+                    Debug.Log("WALL");
                     DoneDashing();
                 }
             } else
