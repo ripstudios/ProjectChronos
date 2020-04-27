@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Platform
   - Wall
+  - SavePoint
   layers:
   - Default
   - TransparentFX

@@ -52,6 +52,8 @@ public class ProtagControlScript : MonoBehaviour
         Debug.Log(TimeShift.Instance.stage);
         this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
         this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
+        camera.transform.position = this.transform.Find("CamPos").position;
+        camera.GetComponent<CameraFollow>().mouseX = checkpoint[TimeShift.Instance.stage].transform.eulerAngles.y;
         Transform handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand/SwordHoldSpot");
         if (!swordCollector.hasSword)
         {
@@ -254,10 +256,14 @@ public class ProtagControlScript : MonoBehaviour
     {
         if (other.CompareTag("Platform"))
         {
+            Debug.Log("STUCK");
             this.gameObject.transform.parent = other.transform;
         }
+        else
+        {
+            DoneDashing();
+        }
         isJumping = 0;
-        DoneDashing();
     }
 
     private void OnTriggerExit(Collider other)

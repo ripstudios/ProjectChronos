@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public Transform Target;
     private Transform Player;
     public GameObject characterToFollow;
-    float mouseX, mouseY;
+    public float mouseX, mouseY;
     float v, h;
     public Transform Obstruction;
     private Vector3 offset;   
@@ -35,8 +35,8 @@ public class CameraFollow : MonoBehaviour
         height = transform.position.y;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
         SetCamera();
+        mouseX = characterToFollow.transform.eulerAngles.y;
     }
 
     void SetCamera() {
@@ -64,10 +64,12 @@ public class CameraFollow : MonoBehaviour
         //     }
         // }
 
-        Transform camPose = this.characterToFollow.transform.Find("CamPos");
-        Vector3 desiredPosition = new Vector3(camPose.position.x, camPose.position.y, camPose.position.z);
-        this.transform.position = desiredPosition;
-        
+        //Transform camPose = this.characterToFollow.transform.Find("CamPos");
+        //Debug.Log(this.characterToFollow.transform.position);
+        //Vector3 desiredPosition = new Vector3(camPose.position.x, camPose.position.y, camPose.position.z);
+        //this.transform.position = desiredPosition;
+        //Debug.Log("MOVING CAMERA");
+        //Debug.Log(this.transform.position);
     }
 
 
@@ -122,7 +124,7 @@ public class CameraFollow : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(camPose.position, fwd, out hit, 1.5f))
                 {
-                    if (hit.collider.gameObject.name != characterToFollow.name && hit.transform.tag != "Door")
+                    if (hit.collider.gameObject.name != characterToFollow.name && hit.transform.tag != "Door" && hit.transform.tag != "SavePoint")
                     {
                         desiredPosition = this.characterToFollow.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Neck/mc_Ad_Head").position;
                     }
