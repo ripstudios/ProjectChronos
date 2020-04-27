@@ -15191,7 +15191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192568449}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35, y: 3, z: -27}
+  m_LocalPosition: {x: 35, y: 2, z: -27}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children: []
   m_Father: {fileID: 1330286422}
@@ -15287,8 +15287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab878eb171b5a94a85c038db16ff725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastSpeed: 1
-  slowSpeed: 0.2
+  fastSpeed: 0.5
+  slowSpeed: 0.05
 --- !u!1001 &1199467133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23884,7 +23884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838357993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51, y: 3, z: -16}
+  m_LocalPosition: {x: 51, y: 2, z: -16}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children: []
   m_Father: {fileID: 1330286422}
@@ -23980,8 +23980,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab878eb171b5a94a85c038db16ff725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastSpeed: 1
-  slowSpeed: 0.2
+  fastSpeed: 0.3
+  slowSpeed: 0.05
 --- !u!1001 &1840095840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24655,6 +24655,11 @@ PrefabInstance:
       propertyPath: checkpoint.Array.data[5]
       value: 
       objectReference: {fileID: 475909394}
+    - target: {fileID: 8292496296534851499, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
+        type: 3}
+      propertyPath: godMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292496297076228521, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
         type: 3}
       propertyPath: m_Name
@@ -24739,6 +24744,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8292496297082461541, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9e53f735b2b5bb4ea8b4803f5e032dc, type: 3}
@@ -26945,7 +26955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070809429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45, y: 3, z: -5}
+  m_LocalPosition: {x: 45, y: 2, z: -5}
   m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_Children: []
   m_Father: {fileID: 1330286422}
@@ -27041,8 +27051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab878eb171b5a94a85c038db16ff725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastSpeed: 1
-  slowSpeed: 0.2
+  fastSpeed: 0.4
+  slowSpeed: 0.05
 --- !u!1001 &2070964984
 PrefabInstance:
   m_ObjectHideFlags: 0
