@@ -5590,6 +5590,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6543582, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5cd29a93d7ae2d488fa0376d0d08462, type: 3}
 --- !u!4 &479195216 stripped
@@ -5635,10 +5639,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 3
+  m_Constraints: 94
+  m_CollisionDetection: 2
 --- !u!114 &479195223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5651,8 +5655,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab878eb171b5a94a85c038db16ff725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fastSpeed: 1
-  slowSpeed: 0.2
+  fastSpeed: 0.2
+  slowSpeed: 0.05
 --- !u!1001 &485938395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11563,7 +11567,7 @@ PrefabInstance:
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4258266823089327556, guid: ec17384865886a9458837497a28cfbb5,
         type: 3}
@@ -24559,6 +24563,11 @@ PrefabInstance:
     - target: {fileID: 6741083909114437399, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
         type: 3}
       propertyPath: hasSword
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257910239608170874, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
+        type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8292496296534851489, guid: a9e53f735b2b5bb4ea8b4803f5e032dc,
