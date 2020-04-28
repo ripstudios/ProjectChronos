@@ -71,6 +71,12 @@ Robot Enemy Model & Animations
 
 Environment
 - [Futuristic Panel Textures LITE](https://assetstore.unity.com/packages/2d/textures-materials/futuristic-panel-textures-lite-80176)
+- [Sci-Fi Styled Modular Pack by karboosx](https://assetstore.unity.com/packages/3d/environments/sci-fi/sci-fi-styled-modular-pack-82913)
+- [Starfield Skybox](https://assetstore.unity.com/packages/2d/textures-materials/sky/starfield-skybox-92717)
+
+Spaceship Model
+- [Destructor Spaceship by Eldanu](https://assetstore.unity.com/packages/3d/vehicles/space/destructor-spaceship-3229)
+
 
 ### Audio
 SFX
@@ -79,6 +85,7 @@ SFX
 
 Voice
 - [Robotic Voice Generator](https://lingojam.com/RobotVoiceGenerator)
+- [Sound Effect Lab](https://soundeffect-lab.info/)
 
 Background Music
 - [CXNTRAST - Saturn](https://www.youtube.com/watch?v=B5sNT98RVOU)
