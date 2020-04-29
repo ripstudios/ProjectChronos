@@ -37,6 +37,8 @@ public class ProtagControlScript : MonoBehaviour
 
     private float mouseX, mouseY;
 
+    public GameObject GlobalPost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,8 +87,7 @@ public class ProtagControlScript : MonoBehaviour
 
         Time.timeScale = 1f;
         TimeShift.Instance.fast = true;
-        TimeShift.Instance.hud = timeShiftHud;
-        
+        TimeShift.Instance.hud = timeShiftHud;        
     }
 
     // Update is called once per frame
@@ -230,6 +231,12 @@ public class ProtagControlScript : MonoBehaviour
         //{
         //    anim.speed = slowSpeed;
         //}
+
+        if (TimeShift.Instance.fast) {
+            GlobalPost.gameObject.SetActive(false);
+        } else {
+            GlobalPost.gameObject.SetActive(true);
+        }
 
     }
 
