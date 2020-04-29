@@ -1,17 +1,17 @@
-# Project Chronos 
+# Project Chronos
 **Presented by RIP Studios**
 
-Members: 
-- Kavin Shravan Krishnan 
+Members:
+- Kavin Shravan Krishnan
 - Lang Wu
-- Peter Everett Zupke
+- Peter Everett Zupke pzupke3@gatech.edu pzupke3
 - Rachel M Techau
 - Semin Choi schoi369@gatech.edu schoi369
 - Yong Jian Quek yjquek@gatech.edu yquek3
 
 
 ## Description
-You wake up in a room alone, with nothing but a single sword in front of you. You don’t know who you are or how you got there. All you hear is a voice that taunts you. 
+You wake up in a room alone, with nothing but a single sword in front of you. You don’t know who you are or how you got there. All you hear is a voice that taunts you.
 
 **"Kill Them All. Reach The End. All Of Time Is Yours”.**
 
@@ -52,7 +52,7 @@ Built on Unity 2019.2.19f1
     6. Camera is smooth and does not cut through any walls
     7. Main character ragdolls if killed
     8. Audio signals attacking functions
-    9. Character does not pass through walls, even while dashing 
+    9. Character does not pass through walls, even while dashing
 4. 3D World with Physics and Spatial Simulation
     1. Game world built by our team specifically to achieve puzzle goals using 3D assets as building blocks
     2. Associated audio triggered by specific actions. For example, sword swinging, door opening, or enemy dying
@@ -78,21 +78,21 @@ Built on Unity 2019.2.19f1
     6. Auditory effects for observable game events
 
 ## Additional Resources
-### Models & Animations 
-Protagonist Model 
-- [FGC Male Adam by Freedom's Gate](https://assetstore.unity.com/packages/3d/characters/humanoids/fgc-male-adam-70002) 
+### Models & Animations
+Protagonist Model
+- [FGC Male Adam by Freedom's Gate](https://assetstore.unity.com/packages/3d/characters/humanoids/fgc-male-adam-70002)
 
-Character Animations 
-- [Basic Motions FREE Pack by Kevin Iglesias](https://assetstore.unity.com/packages/3d/animations/basic-motions-free-pack-154271) 
-- [Warrior Pack Bundle 2 Free by Explosive](https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-2-free-42454) 
+Character Animations
+- [Basic Motions FREE Pack by Kevin Iglesias](https://assetstore.unity.com/packages/3d/animations/basic-motions-free-pack-154271)
+- [Warrior Pack Bundle 2 Free by Explosive](https://assetstore.unity.com/packages/3d/animations/warrior-pack-bundle-2-free-42454)
 
-Character Sword Model 
-- [LowPoly Cyber Ninja Sword by Cole](https://assetstore.unity.com/packages/3d/props/weapons/lowpoly-cyber-ninja-sword-129464) 
+Character Sword Model
+- [LowPoly Cyber Ninja Sword by Cole](https://assetstore.unity.com/packages/3d/props/weapons/lowpoly-cyber-ninja-sword-129464)
 
 Human Enemy Model
 - [Bodyguards by Batewar](https://assetstore.unity.com/packages/3d/characters/humanoids/bodyguards-31711)
 
-Robot Enemy Model & Animations 
+Robot Enemy Model & Animations
 - [Sci-Fi Soldier](https://assetstore.unity.com/packages/3d/characters/humanoids/sci-fi-soldier-29559)
 - [Volumetric Lines](https://assetstore.unity.com/packages/tools/particles-effects/volumetric-lines-29160)
 
@@ -117,7 +117,7 @@ Voice
 Background Music
 - [CXNTRAST - Saturn](https://www.youtube.com/watch?v=B5sNT98RVOU)
 
-### Scripts 
+### Scripts
 - EventManager.cs - Jeff Wilson for CS4455/CS6457 Spring 2020 Video Game Design at Georgia Institute of Technology
 
 ## Testing Steps
