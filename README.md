@@ -108,6 +108,10 @@ Double Space: Double Jump
     5. No godmode accessible via built game
     6. Auditory effects for observable game events
 
+## Deficiencies / Known bugs
+- Lacks detailed environmental responses & animations
+- Moving platforms can be unstable
+
 ## Credits
 Programming
 - Kavin Krishnan
