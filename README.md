@@ -53,7 +53,8 @@ Built on Unity 2019.2.19f1
     4. Animated objects such as moving platforms and blaster beams
     5. Fully working buttons that are animated and open doors differently depending on the timestream you're in
     6. Character has 6 DOF
-    7. Consistent character controls. Not tied to framerate.
+    7. Consistent character controls. Not tied to framerate
+    8. Visual shift in color to represent different flow of time
 5. Artifical Intelligence
     1. AI animation control and finite state machine developed by our team
     2. AI reacts and changes state based on player's behaviour
