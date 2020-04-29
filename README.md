@@ -19,6 +19,9 @@ You reach for the sword. It's time to kill.
 
 Built on Unity 2019.2.19f1
 
+## Installation and Execution
+No additional installation procedure is required. Simply run Build/ProjectChronos.exe
+
 ## Gameplay Instructions:
 
 MOVEMENT
