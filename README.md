@@ -3,7 +3,7 @@
 
 Members:
 - Kavin Shravan Krishnan kkrishnan9@gatech.edu kkrishnan9
-- Lang Wu wu.lang@gatech.edu
+- Lang Wu wu.lang@gatech.edu lwu309
 - Peter Everett Zupke pzupke3@gatech.edu pzupke3
 - Rachel M Techau rtechau3@gatech.edu rtechau3
 - Semin Choi schoi369@gatech.edu schoi369
@@ -18,6 +18,34 @@ You wake up in a room alone, with nothing but a single sword in front of you. Yo
 You reach for the sword. It's time to kill.
 
 Built on Unity 2019.2.19f1
+
+## Gameplay Instructions:
+
+MOVEMENT
+
+W: Forward
+
+A: Left strafe
+
+S: Backwards
+
+D: Right strafe
+
+Space: Jump
+
+Move mouse right: Pivot right
+
+Move mouse left: Pivot left
+
+SKILLS
+
+Left shift: Dash
+
+Left click: Attack
+
+Left Alt: Toggle on/off TIMESHIFT
+
+Double Space: Double Jump
 
 ## Requirements Completed
 1. 3D Feel Game
@@ -76,6 +104,21 @@ Built on Unity 2019.2.19f1
     4. Sounds syncs up with visual activities
     5. No godmode accessible via built game
     6. Auditory effects for observable game events
+
+## Credits
+Programming
+- Kavin Krishnan
+- Yong Jian Quek
+- Lang Wu
+
+Modeling & Animation
+- Rachel Techau
+- Peter Zupke
+
+Level Design
+- Semin Choi
+
+
 
 ## Additional Resources
 ### Models & Animations
