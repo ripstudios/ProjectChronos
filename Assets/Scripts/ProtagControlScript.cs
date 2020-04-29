@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class ProtagControlScript : MonoBehaviour
 {
@@ -233,9 +234,12 @@ public class ProtagControlScript : MonoBehaviour
         //}
 
         if (TimeShift.Instance.fast) {
-            GlobalPost.gameObject.SetActive(false);
+            GlobalPost.GetComponent<PostProcessVolume>().weight -= 0.05f;
+            GlobalPost.GetComponent<PostProcessVolume>().weight = Mathf.Max(GlobalPost.GetComponent<PostProcessVolume>().weight, 0);
         } else {
-            GlobalPost.gameObject.SetActive(true);
+            GlobalPost.GetComponent<PostProcessVolume>().weight += 0.05f;
+            GlobalPost.GetComponent<PostProcessVolume>().weight = Mathf.Min(GlobalPost.GetComponent<PostProcessVolume>().weight, 1);
+
         }
 
     }
