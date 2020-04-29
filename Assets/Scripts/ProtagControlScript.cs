@@ -52,8 +52,11 @@ public class ProtagControlScript : MonoBehaviour
         Debug.Log(TimeShift.Instance.stage);
         this.transform.position = checkpoint[TimeShift.Instance.stage].transform.position;
         this.transform.rotation = checkpoint[TimeShift.Instance.stage].transform.rotation;
-        camera.transform.position = this.transform.Find("CamPos").position;
-        camera.GetComponent<CameraFollow>().mouseX = checkpoint[TimeShift.Instance.stage].transform.eulerAngles.y;
+        if (camera != null)
+        {
+            camera.transform.position = this.transform.Find("CamPos").position;
+            camera.GetComponent<CameraFollow>().mouseX = checkpoint[TimeShift.Instance.stage].transform.eulerAngles.y;
+        }
         Transform handHold = this.transform.Find("FGC_Male_Char_Adam_Rig/mc_Ad_Hip/mc_Ad_Abdomen/mc_Ad_Chest/mc_Ad_Right Collar/mc_Ad_Right Shoulder/mc_Ad_Right Forearm/mc_Ad_Right Hand/SwordHoldSpot");
         if (!swordCollector.hasSword)
         {
@@ -154,7 +157,7 @@ public class ProtagControlScript : MonoBehaviour
         //     anim.SetBool("TurningRight", false);
         // }
 
-        if (!gameOver.interactable && !stageClear.interactable && !pause.interactable)
+        if (gameOver != null && stageClear != null && pause != null && !gameOver.interactable && !stageClear.interactable && !pause.interactable)
         {
             if (Input.GetButtonDown("Jump"))
             {
