@@ -112,21 +112,6 @@ Double Space: Double Jump
 - Lacks detailed environmental responses & animations
 - Moving platforms can be unstable
 
-## Credits
-Programming
-- Kavin Krishnan
-- Yong Jian Quek
-- Lang Wu
-
-Modeling & Animation
-- Rachel Techau
-- Peter Zupke
-
-Level Design
-- Semin Choi
-
-
-
 ## Additional Resources
 ### Models & Animations
 Protagonist Model
@@ -154,7 +139,6 @@ Environment
 Spaceship Model
 - [Destructor Spaceship by Eldanu](https://assetstore.unity.com/packages/3d/vehicles/space/destructor-spaceship-3229)
 
-
 ### Audio
 SFX
 - [Star Wars DC-15A Blaster Rifle Sound Effect](https://www.youtube.com/watch?v=KM3IWzhBIHw)
@@ -169,6 +153,19 @@ Background Music
 
 ### Scripts
 - EventManager.cs - Jeff Wilson for CS4455/CS6457 Spring 2020 Video Game Design at Georgia Institute of Technology
+
+## Credits
+Programming
+- Kavin Krishnan
+- Yong Jian Quek
+- Lang Wu
+
+Modeling & Animation
+- Rachel Techau
+- Peter Zupke
+
+Level Design
+- Semin Choi
 
 ## Testing Steps
 1. Launch game
