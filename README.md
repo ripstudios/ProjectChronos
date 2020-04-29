@@ -2,12 +2,12 @@
 **Presented by RIP Studios**
 
 Members: 
--Kavin Shravan Krishnan 
--Lang Wu
--Peter Everett Zupke
--Rachel M Techau
--Semin Choi schoi369@gatech.edu schoi369
--Yong Jian Quek yjquek@gatech.edu yquek3
+- Kavin Shravan Krishnan 
+- Lang Wu
+- Peter Everett Zupke
+- Rachel M Techau
+- Semin Choi schoi369@gatech.edu schoi369
+- Yong Jian Quek yjquek@gatech.edu yquek3
 
 
 ## Description
